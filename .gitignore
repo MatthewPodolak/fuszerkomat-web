@@ -1,0 +1,44 @@
+# Node modules
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Build output
+dist/
+build/
+.cache/
+vite.config.ts.timestamp*
+vite.config.mjs.timestamp*
+
+# Local environment files
+.env
+.env.local
+.env.*.local
+
+# Editor and OS junk
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*.tmp
+
+# VS Code
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# Logs
+*.log
+
+# Dependency directories (in case of monorepos)
+*/node_modules/
+
+# Optional lock files (if you use one package manager consistently)
+# yarn.lock
+# pnpm-lock.yaml
+# package-lock.json
+
+# Tailwind / DaisyUI generated cache (if any future versions use one)
+.tailwind/
