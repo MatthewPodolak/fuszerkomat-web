@@ -45,7 +45,9 @@ export default function Navbar() {
           </div>
         ) : (
           <div className="flex items-center gap-1 sm:gap-2">
-            <button className="btn btn-ghost btn-sm lg:btn-md whitespace-nowrap">Zaloguj się</button>
+            <Link to="/login">
+              <button className="btn btn-ghost btn-sm lg:btn-md whitespace-nowrap">Zaloguj się</button>
+            </Link>
             <Link to="/register">
               <button className="btn btn-accent btn-sm lg:btn-md whitespace-nowrap">Zarejestruj się</button>
             </Link>
