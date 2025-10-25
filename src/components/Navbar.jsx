@@ -1,17 +1,20 @@
 import { useState } from "react";
 import Logo from "../assets/images/Logo.png";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   const [isLogged, setIsLogged] = useState(false);
 
   return (
     <div className="navbar sticky top-0 z-50 bg-secondary text-secondary-content/95 shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
-      <div className="navbar-start">
-        <a className="px-2 gap-3 flex flex-row items-center cursor-pointer">
-          <img src={Logo} alt="fuszerkomat.pl" className="h-12 w-auto object-contain" />
-          <span className="hidden lg:flex text-xl tracking-[0.3em] font-marker text-accent"> FUSZERKOMAT.PL </span>
-        </a>
-      </div>
+      <Link className="navbar-start" to="/">
+        <div className="navbar-start">
+          <a className="px-2 gap-3 flex flex-row items-center cursor-pointer">
+            <img src={Logo} alt="fuszerkomat.pl" className="h-12 w-auto object-contain" />
+            <span className="hidden lg:flex text-xl tracking-[0.3em] font-marker text-accent"> FUSZERKOMAT.PL </span>
+          </a>
+        </div>
+      </Link>
 
       <div className="navbar-center" />
 
@@ -43,7 +46,9 @@ export default function Navbar() {
         ) : (
           <div className="flex items-center gap-1 sm:gap-2">
             <button className="btn btn-ghost btn-sm lg:btn-md whitespace-nowrap">Zaloguj się</button>
-            <button className="btn btn-accent btn-sm lg:btn-md whitespace-nowrap">Zarejestruj się</button>
+            <Link to="/register">
+              <button className="btn btn-accent btn-sm lg:btn-md whitespace-nowrap">Zarejestruj się</button>
+            </Link>
           </div>
         )}
       </div>
