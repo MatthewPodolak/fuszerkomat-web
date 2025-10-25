@@ -8,6 +8,7 @@ const Home = lazy(() => import("./pages/Home"));
 const Error = lazy(() => import("./pages/error/Error"));
 
 const Register = lazy(() => import("./pages/auth/Register"));
+const Login = lazy(() => import("./pages/auth/Login"));
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       { path: "register", element: <Register /> },
+      { path: "login", element: <Login /> },
     ],
   },
 ]);
