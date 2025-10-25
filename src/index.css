@@ -27,3 +27,37 @@
   body { @apply font-sans; }
   html { scroll-behavior: smooth; }
 }
+
+@theme {
+  --font-sans: "Helvetica", Arial, sans-serif;
+
+  --color-cream: #F5EEDC;
+  --color-blue:  #27548A;
+  --color-deep:  #183B4E;
+  --color-gold:  #DDA853;
+}
+
+@plugin "daisyui" {
+  themes: false;
+}
+
+@plugin "daisyui/theme" {
+  name: "def";
+  default: true;
+  color-scheme: light;
+
+  --color-primary: var(--color-blue);
+  --color-primary-content: var(--color-cream);
+
+  --color-secondary: var(--color-deep);
+  --color-secondary-content: var(--color-cream);
+
+  --color-accent: var(--color-gold);
+  --color-accent-content: var(--color-deep);
+
+  --color-neutral: var(--color-deep);
+  --color-neutral-content: var(--color-cream);
+
+  --color-base-100: var(--color-cream);
+  --color-base-content: var(--color-deep);
+}
