@@ -1,0 +1,218 @@
+[
+  {
+    "category": "BudownictwoIRemonty",
+    "name": "Budownictwo i Remonty",
+    "tags": [
+      "Murarz",
+      "Tynkarz",
+      "Malarz",
+      "Tapeciarz",
+      "Płytkarz",
+      "Posadzkarz",
+      "Cieśla",
+      "Dekarz",
+      "Elewacje",
+      "Docieplenia",
+      "KierownikBudowy",
+      "Architekt",
+      "RemontMieszkania",
+      "RemontŁazienki",
+      "RemontKuchni"
+    ]
+  },
+  {
+    "category": "InstalacjeTechniczne",
+    "name": "Instalacje Techniczne",
+    "tags": [
+      "Elektryk",
+      "Hydraulik",
+      "Gazownik",
+      "Klimatyzacja",
+      "Wentylacja",
+      "OgrzewaniePodłogowe",
+      "Fotowoltaika",
+      "Alarmy",
+      "SmartHome",
+      "Monitoring"
+    ]
+  },
+  {
+    "category": "MebleIMontaz",
+    "name": "Meble i Montaż",
+    "tags": [
+      "MebleNaWymiar",
+      "MontażMebli",
+      "Stolarz",
+      "Drzwi",
+      "Okna",
+      "Parapety",
+      "RoletyIZasłony"
+    ]
+  },
+  {
+    "category": "OgrodINatura",
+    "name": "Ogród i Natura",
+    "tags": [
+      "Ogrodnik",
+      "ProjektowanieOgrodu",
+      "PielęgnacjaRoślin",
+      "SystemyNawadniania",
+      "KoszenieTrawy",
+      "Tarasy",
+      "Altany",
+      "Baseny"
+    ]
+  },
+  {
+    "category": "TransportILogistyka",
+    "name": "Transport i Logistyka",
+    "tags": [
+      "TransportKrajowy",
+      "TransportMiędzynarodowy",
+      "Przeprowadzki",
+      "Kurier",
+      "Taxi",
+      "Dostawa"
+    ]
+  },
+  {
+    "category": "ITIUsługiZdalne",
+    "name": "IT i Usługi Zdalne",
+    "tags": [
+      "Programowanie",
+      "TworzenieStron",
+      "SEO",
+      "Copywriting",
+      "Grafika",
+      "SocialMedia",
+      "MontażWideo",
+      "AdministracjaSystemami",
+      "PomocIT",
+      "WirtualnyAsystent"
+    ]
+  },
+  {
+    "category": "ProjektowanieIKreatywnosc",
+    "name": "Projektowanie i Kreatywność",
+    "tags": [
+      "ArchitektWnętrz",
+      "Grafik",
+      "Fotograf",
+      "Wideo",
+      "Branding",
+      "UXUI",
+      "Animacja2D3D"
+    ]
+  },
+  {
+    "category": "EdukacjaISzkolenia",
+    "name": "Edukacja i Szkolenia",
+    "tags": [
+      "KorepetycjeMatematyka",
+      "KorepetycjeAngielski",
+      "KursProgramowania",
+      "NaukaMuzyki",
+      "NaukaTańca",
+      "SzkoleniaZawodowe",
+      "Tłumaczenia"
+    ]
+  },
+  {
+    "category": "UslugiDlaFirm",
+    "name": "Usługi dla Firm",
+    "tags": [
+      "Marketing",
+      "Księgowość",
+      "KadryIPłace",
+      "BHP",
+      "SprzedażTelefoniczna",
+      "CallCenter",
+      "DoradztwoBiznesowe"
+    ]
+  },
+  {
+    "category": "FinanseIPrawo",
+    "name": "Finanse i Prawo",
+    "tags": [
+      "DoradcaFinansowy",
+      "Kredyty",
+      "Leasing",
+      "Księgowy",
+      "Adwokat",
+      "Notariusz",
+      "RadcaPrawny",
+      "DoradcaPodatkowy"
+    ]
+  },
+  {
+    "category": "ZdrowieIUroda",
+    "name": "Zdrowie i Uroda",
+    "tags": [
+      "Fryzjer",
+      "Kosmetyczka",
+      "Masaż",
+      "Dietetyk",
+      "TrenerPersonalny",
+      "ManicurePedicure",
+      "Makijaż",
+      "Spa",
+      "Psycholog"
+    ]
+  },
+  {
+    "category": "Motoryzacja",
+    "name": "Motoryzacja",
+    "tags": [
+      "Mechanik",
+      "Lakiernik",
+      "Myjnia",
+      "Detailing",
+      "SerwisOpon",
+      "Blacharz",
+      "Diagnosta"
+    ]
+  },
+  {
+    "category": "Sprzatanie",
+    "name": "Sprzątanie",
+    "tags": [
+      "SprzątanieDomów",
+      "SprzątanieBiur",
+      "MycieOkien",
+      "CzyszczenieTapicerki",
+      "Ozonowanie",
+      "PranieDywanów"
+    ]
+  },
+  {
+    "category": "ImprezyIRozrywka",
+    "name": "Imprezy i Rozrywka",
+    "tags": [
+      "DJ",
+      "ZespółMuzyczny",
+      "FotografNaWesele",
+      "OrganizacjaEventu",
+      "Catering",
+      "Dekoracje",
+      "AnimatorDlaDzieci"
+    ]
+  },
+  {
+    "category": "ZlotaRaczka",
+    "name": "Złota Rączka",
+    "tags": [
+      "NaprawyDomowe",
+      "MontażAGD",
+      "NaprawaAGD",
+      "NaprawaDrzwi",
+      "NaprawaOkien",
+      "Spawanie",
+      "Ślusarz"
+    ]
+  },
+  {
+    "category": "Other",
+    "name": "Inne",
+    "tags": ["Other"]
+  }
+]
