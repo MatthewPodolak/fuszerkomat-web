@@ -2,6 +2,7 @@
   {
     "category": "BudownictwoIRemonty",
     "name": "Budownictwo i Remonty",
+    "desc": "Szukasz ekipy do budowy, remontu lub wykończenia mieszkania? W tej kategorii znajdziesz fachowców od wszystkiego, co związane z tworzeniem i odświeżaniem przestrzeni – od murowania, tynkowania i malowania po kompleksowe remonty łazienek i kuchni. Postaw na solidnych wykonawców, którzy zrobią to raz, a dobrze.",
     "tags": [
       "Murarz",
       "Tynkarz",
@@ -23,6 +24,7 @@
   {
     "category": "InstalacjeTechniczne",
     "name": "Instalacje Techniczne",
+    "desc": "Tutaj znajdziesz specjalistów od elektryki, hydrauliki, gazu i innych instalacji, bez których żaden budynek nie może funkcjonować. Fachowcy zadbają o bezpieczne połączenia, modernizacje, naprawy i przeglądy systemów. Od ogrzewania podłogowego po fotowoltaikę – wszystko, co sprawia, że Twój dom działa sprawnie i oszczędnie.",
     "tags": [
       "Elektryk",
       "Hydraulik",
@@ -39,6 +41,7 @@
   {
     "category": "MebleIMontaz",
     "name": "Meble i Montaż",
+    "desc": "Masz nowe meble i potrzebujesz pomocy przy montażu? A może marzysz o kuchni na wymiar lub nowej szafie wnękowej? Tu znajdziesz stolarzy, montażystów i specjalistów od zabudowy, którzy stworzą i złożą wszystko – od prostego regału po eleganckie wnętrze szyte na miarę Twojego stylu.",
     "tags": [
       "MebleNaWymiar",
       "MontażMebli",
@@ -52,6 +55,7 @@
   {
     "category": "OgrodINatura",
     "name": "Ogród i Natura",
+    "desc": "Twój ogród może być oazą spokoju i piękna – wystarczy, że powierzysz go w ręce profesjonalistów. Projektanci ogrodów, ogrodnicy i monterzy systemów nawadniania pomogą Ci stworzyć lub odświeżyć zieloną przestrzeń. Od trawnika po altanę – wszystko, byś mógł cieszyć się naturą bez wysiłku.",
     "tags": [
       "Ogrodnik",
       "ProjektowanieOgrodu",
@@ -66,6 +70,7 @@
   {
     "category": "TransportILogistyka",
     "name": "Transport i Logistyka",
+    "desc": "Potrzebujesz przewieźć meble, zamówienie lub całe biuro? W tej kategorii znajdziesz firmy transportowe, kierowców i kurierów, którzy zajmą się Twoim ładunkiem od drzwi do drzwi. Bezpiecznie, terminowo i w dobrej cenie – zarówno lokalnie, jak i za granicą.",
     "tags": [
       "TransportKrajowy",
       "TransportMiędzynarodowy",
@@ -78,6 +83,7 @@
   {
     "category": "ITIUsługiZdalne",
     "name": "IT i Usługi Zdalne",
+    "desc": "Świat cyfrowy nie ma przed nimi tajemnic – programiści, graficy, copywriterzy, administratorzy systemów i inni specjaliści online. Niezależnie od tego, czy potrzebujesz strony internetowej, sklepu online, tekstów SEO czy pomocy z komputerem – tutaj znajdziesz profesjonalistów, którzy działają zdalnie, szybko i skutecznie.",
     "tags": [
       "Programowanie",
       "TworzenieStron",
@@ -94,6 +100,7 @@
   {
     "category": "ProjektowanieIKreatywnosc",
     "name": "Projektowanie i Kreatywność",
+    "desc": "Jeśli potrzebujesz świeżego pomysłu, profesjonalnego projektu lub wizualnej oprawy dla swojego pomysłu – to miejsce dla Ciebie. Architekci wnętrz, graficy, fotografowie, montażyści i animatorzy stworzą wyjątkowe dzieła, które zachwycą Twoich klientów i gości. Kreatywność bez granic – od logo po film reklamowy.",
     "tags": [
       "ArchitektWnętrz",
       "Grafik",
@@ -107,6 +114,7 @@
   {
     "category": "EdukacjaISzkolenia",
     "name": "Edukacja i Szkolenia",
+    "desc": "Rozwijaj swoje umiejętności i odkrywaj nowe pasje. Korepetytorzy, trenerzy i nauczyciele pomogą Ci osiągnąć cele edukacyjne – od nauki języków i muzyki po kursy programowania i szkolenia zawodowe. Dla dzieci, dorosłych i firm – edukacja dopasowana do Twoich potrzeb.",
     "tags": [
       "KorepetycjeMatematyka",
       "KorepetycjeAngielski",
@@ -120,6 +128,7 @@
   {
     "category": "UslugiDlaFirm",
     "name": "Usługi dla Firm",
+    "desc": "Prowadzisz firmę i potrzebujesz wsparcia? W tej kategorii znajdziesz specjalistów od marketingu, księgowości, kadr, BHP i sprzedaży. Outsourcing pozwala zaoszczędzić czas i pieniądze – znajdź sprawdzonych partnerów biznesowych, którzy pomogą Ci rozwijać działalność i osiągać lepsze wyniki.",
     "tags": [
       "Marketing",
       "Księgowość",
@@ -133,6 +142,7 @@
   {
     "category": "FinanseIPrawo",
     "name": "Finanse i Prawo",
+    "desc": "Porady prawne, pomoc w finansach, rozliczeniach i umowach – wszystko w jednym miejscu. Znajdź adwokata, notariusza, doradcę podatkowego lub księgowego, który zajmie się Twoimi sprawami profesjonalnie i dyskretnie. Bezpiecznie, zgodnie z przepisami i z pełnym zaufaniem.",
     "tags": [
       "DoradcaFinansowy",
       "Kredyty",
@@ -147,6 +157,7 @@
   {
     "category": "ZdrowieIUroda",
     "name": "Zdrowie i Uroda",
+    "desc": "Zadbaj o swoje ciało i samopoczucie. W tej kategorii znajdziesz specjalistów od pielęgnacji, masażu, kosmetyki, fryzjerstwa i dietetyki. Odkryj miejsce, gdzie zdrowie i piękno idą w parze, a profesjonaliści pomogą Ci poczuć się pewnie, świeżo i zrelaksowanie każdego dnia.",
     "tags": [
       "Fryzjer",
       "Kosmetyczka",
@@ -162,6 +173,7 @@
   {
     "category": "Motoryzacja",
     "name": "Motoryzacja",
+    "desc": "Dla kierowców i pasjonatów motoryzacji. Mechanicy, lakiernicy, diagności i specjaliści od detailingu zadbają o Twój samochód jak o własny. Niezależnie od tego, czy potrzebujesz przeglądu, naprawy, czyszczenia czy tuningu – Twój pojazd będzie w najlepszych rękach.",
     "tags": [
       "Mechanik",
       "Lakiernik",
@@ -175,6 +187,7 @@
   {
     "category": "Sprzatanie",
     "name": "Sprzątanie",
+    "desc": "Czysto, świeżo i pachnąco – bez stresu i wysiłku. Profesjonalne ekipy sprzątające zajmą się domem, biurem lub obiektem po remoncie. Mycie okien, pranie dywanów, czyszczenie tapicerki – wszystko, byś mógł cieszyć się idealnym porządkiem każdego dnia.",
     "tags": [
       "SprzątanieDomów",
       "SprzątanieBiur",
@@ -187,6 +200,7 @@
   {
     "category": "ImprezyIRozrywka",
     "name": "Imprezy i Rozrywka",
+    "desc": "Organizujesz wesele, urodziny, imprezę firmową lub koncert? Znajdziesz tu DJ-ów, zespoły muzyczne, fotografów, animatorów i firmy eventowe, które zajmą się wszystkim od A do Z. Zadbaj o dekoracje, catering i atmosferę – tak, by Twoja impreza była niezapomniana.",
     "tags": [
       "DJ",
       "ZespółMuzyczny",
@@ -200,6 +214,7 @@
   {
     "category": "ZlotaRaczka",
     "name": "Złota Rączka",
+    "desc": "Nie ma rzeczy, której nie da się naprawić! Złote rączki pomogą Ci w drobnych i większych usterkach domowych – od napraw drzwi i okien po montaż sprzętu AGD. Szybko, solidnie i bez zbędnego gadania – po prostu naprawione tak, jak trzeba.",
     "tags": [
       "NaprawyDomowe",
       "MontażAGD",
@@ -213,6 +228,7 @@
   {
     "category": "Other",
     "name": "Inne",
+    "desc": "Nie znalazłeś odpowiedniej kategorii? Tutaj możesz dodać lub znaleźć nietypowe usługi, które nie mieszczą się w żadnej innej grupie. Od drobnych zleceń po unikalne pomysły – każdy fachowiec znajdzie tu swoje miejsce.",
     "tags": ["Other"]
   }
 ]

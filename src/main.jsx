@@ -5,6 +5,7 @@ import RootLayout from "./layouts/RootLayout";
 import "./index.css";
 
 const Home = lazy(() => import("./pages/Home"));
+const Category = lazy(() => import("./pages/Category"));
 const Error = lazy(() => import("./pages/error/Error"));
 
 const Register = lazy(() => import("./pages/auth/Register"));
@@ -17,6 +18,7 @@ const router = createBrowserRouter([
     errorElement: <Error />,
     children: [
       { index: true, element: <Home /> },
+      { path: "category/:category", element: <Category /> },
       { path: "register", element: <Register /> },
       { path: "login", element: <Login /> },
     ],
