@@ -1,4 +1,5 @@
 import categories from "../data/Categories.json";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   return (
@@ -29,7 +30,7 @@ export default function Home() {
           {categories.map(({ category, name, tags }) => {
             const count = tags?.length ?? 0;
             return (
-              <a key={category} className="card bg-base-100 hover:shadow-lg transition cursor-pointer">
+              <Link key={category} to={`/category/${category}`} className="card bg-base-100 hover:shadow-lg transition cursor-pointer">
                 <div className="card-body">
                   <h3 className="card-title text-base">{name}</h3>
                   <p className="text-sm text-base-content/70">
@@ -39,7 +40,7 @@ export default function Home() {
                     <span className="">Zobacz</span>
                   </div>
                 </div>
-              </a>
+              </Link>
             );
           })}
         </section>
