@@ -2,7 +2,10 @@ import React, { Suspense, lazy } from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import RootLayout from "./layouts/RootLayout";
+import { hydrateTokenStore } from "@/api/tokenStore.js";
 import "./index.css";
+
+hydrateTokenStore();
 
 const Home = lazy(() => import("./pages/Home"));
 const Category = lazy(() => import("./pages/Category"));

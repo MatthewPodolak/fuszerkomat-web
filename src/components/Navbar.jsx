@@ -1,25 +1,25 @@
-import { useState } from "react";
 import Logo from "../assets/images/Logo.png";
 import { Link } from "react-router-dom";
+import { useAuth } from "@/api/hooks/useAuth";
 
 export default function Navbar() {
-  const [isLogged, setIsLogged] = useState(false);
-
+  const { isAuthed } = useAuth();
+  
   return (
     <div className="navbar sticky top-0 z-50 bg-secondary text-secondary-content/95 shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
       <Link className="navbar-start" to="/">
         <div className="navbar-start">
-          <a className="px-2 gap-3 flex flex-row items-center cursor-pointer">
+          <div className="px-2 gap-3 flex flex-row items-center cursor-pointer">
             <img src={Logo} alt="fuszerkomat.pl" className="h-12 w-auto object-contain" />
             <span className="hidden lg:flex text-xl tracking-[0.3em] font-marker text-accent"> FUSZERKOMAT.PL </span>
-          </a>
+          </div>
         </div>
       </Link>
 
       <div className="navbar-center" />
 
       <div className="navbar-end gap-2">
-        {isLogged ? (
+        {isAuthed ? (
           <div className="flex items-center gap-4">
 
             <div className="rounded-full cursor-pointer">
