@@ -1,4 +1,4 @@
-import { tokenStore } from "./tokenStore.js";
+import { tokenStore } from "@/api/tokenStore.js";
 import { API } from "@/api/endpoints.js";
 import getExp from "@/helpers/jwtHelper.js";
 
@@ -39,7 +39,7 @@ export async function doRefresh({ ct, timeoutMs } = {}) {
       if (!result.success) throw result;
 
       const data = result.data ?? {};
-      const accessToken = data.accessToken;
+      const accessToken = data.acessToken;
       const newRt = data.refreshToken ?? rt;
       if (!accessToken) throw new Error("Missing access token");
 
