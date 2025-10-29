@@ -124,7 +124,8 @@ export async function apiFetch(path, init = {}, opts = {}) {
     }
 
     return res;
-  } finally {
+  }
+  finally {
     composed?.cleanup?.();
   }
 }
