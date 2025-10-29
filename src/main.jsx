@@ -9,11 +9,13 @@ import { ToastProvider } from "@/context/ToastContext.jsx";
 import GlobalErrorCatcher from "@/helpers/GlobalErrorCatcher.jsx";
 import "./index.css";
 
+import Loading from "./pages/loading/Loading";
+
 hydrateTokenStore();
 
+const Error = lazy(() => import("./pages/error/Error"));
 const Home = lazy(() => import("./pages/Home"));
 const Category = lazy(() => import("./pages/Category"));
-const Error = lazy(() => import("./pages/error/Error"));
 
 const Register = lazy(() => import("./pages/auth/Register"));
 const Login = lazy(() => import("./pages/auth/Login"));
@@ -36,7 +38,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <ToastProvider>
       <GlobalErrorCatcher>
-        <Suspense fallback={<div>Ładowanie…</div>}> 
+        <Suspense fallback={<Loading/>}> 
           <RouterProvider router={router} />
         </Suspense>
       </GlobalErrorCatcher>
