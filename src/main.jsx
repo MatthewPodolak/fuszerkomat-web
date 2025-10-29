@@ -22,7 +22,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
-    errorElement: <Error />,
+    errorElement: <RootLayout><Error /></RootLayout>,
     children: [
       { index: true, element: <Home /> },
       { path: "category/:category", element: <Category /> },
