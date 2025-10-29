@@ -25,6 +25,8 @@ export const AuthService = {
         scheduleRefresh: () => doRefresh({ timeoutMs: 15000 }),
       });
     }
+
+    return res;
   },
 
   async refresh() {
@@ -86,6 +88,8 @@ export const AuthService = {
         scheduleRefresh: () => doRefresh({ timeoutMs: 15000 }),
       });
     }
+
+    return res;
   },
 
   async logout() {

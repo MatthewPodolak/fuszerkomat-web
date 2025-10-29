@@ -27,6 +27,7 @@ export function useAuth() {
 
   const login = useCallback((email, password) => AuthService.login(email, password), []);
   const logout = useCallback(() => AuthService.logout(), []);
+  const register = useCallback((email, password, accountType, name = null, companyName = null) => AuthService.register(email, password, accountType, name, companyName), []);
 
-  return useMemo(() => ({ ready, isAuthed, login, logout }), [ready, isAuthed, login, logout]);
+  return useMemo(() => ({ ready, isAuthed, login, logout, register }), [ready, isAuthed, login, logout, register]);
 }
