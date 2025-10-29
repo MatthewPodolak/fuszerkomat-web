@@ -2,6 +2,8 @@ import React, { Suspense, lazy } from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import RootLayout from "./layouts/RootLayout";
+import PublicOnly from "@/layouts/guards/PublicOnly.jsx";
+import AuthOnly from "@/layouts/guards/PublicOnly.jsx";
 import { hydrateTokenStore } from "@/api/tokenStore.js";
 import { ToastProvider } from "@/context/ToastContext.jsx";
 import GlobalErrorCatcher from "@/helpers/GlobalErrorCatcher.jsx";
@@ -24,8 +26,8 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       { path: "category/:category", element: <Category /> },
-      { path: "register", element: <Register /> },
-      { path: "login", element: <Login /> },
+      { path: "register", element: <PublicOnly><Register /></PublicOnly> },
+      { path: "login",    element: <PublicOnly><Login /></PublicOnly> },
     ],
   },
 ]);
