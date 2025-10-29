@@ -3,6 +3,8 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import RootLayout from "./layouts/RootLayout";
 import { hydrateTokenStore } from "@/api/tokenStore.js";
+import { ToastProvider } from "@/context/ToastContext.jsx";
+import GlobalErrorCatcher from "@/helpers/GlobalErrorCatcher.jsx";
 import "./index.css";
 
 hydrateTokenStore();
@@ -30,8 +32,12 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Suspense fallback={<div>Ładowanie…</div>}> 
-      <RouterProvider router={router} />
-    </Suspense>
+    <ToastProvider>
+      <GlobalErrorCatcher>
+        <Suspense fallback={<div>Ładowanie…</div>}> 
+          <RouterProvider router={router} />
+        </Suspense>
+      </GlobalErrorCatcher>
+    </ToastProvider>
   </React.StrictMode>
 );
