@@ -7,3 +7,13 @@ export default function getJwtExp(jwt) {
     return 0;
   }
 }
+
+export function getJwtClaim(jwt, claimName) {
+  try {
+    const [, payload] = jwt.split(".");
+    const json = JSON.parse(atob(payload.replace(/-/g, "+").replace(/_/g, "/")));
+    return json?.[claimName] ?? null;
+  } catch {
+    return null;
+  }
+}

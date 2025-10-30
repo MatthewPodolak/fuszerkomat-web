@@ -9,6 +9,12 @@ export function useAuth() {
     () => false
   );
 
+  const claim = useSyncExternalStore(
+    tokenStore.subscribe,
+    () => tokenStore.getClaim(),
+    () => null
+  );
+
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
@@ -29,5 +35,5 @@ export function useAuth() {
   const logout = useCallback(() => AuthService.logout(), []);
   const register = useCallback((email, password, accountType, name = null, companyName = null) => AuthService.register(email, password, accountType, name, companyName), []);
 
-  return useMemo(() => ({ ready, isAuthed, login, logout, register }), [ready, isAuthed, login, logout, register]);
+  return useMemo(() => ({ ready, isAuthed, claim, login, logout, register }), [ready, isAuthed, claim, login, logout, register]);
 }

@@ -1,5 +1,8 @@
+import { getJwtClaim } from "@/helpers/jwtHelper"
+
 let accessToken = null;
 let refreshToken = null;
+let claimType = null;
 let accessExp = 0;
 let refreshTimer = null;
 
@@ -34,12 +37,15 @@ export const tokenStore = {
   get() { return accessToken; },
   getExp() { return accessExp; },
   getRefresh() { return refreshToken; },
+  getClaim() { return claimType },
   subscribe(fn) { listeners.add(fn); return () => listeners.delete(fn); },
 
   set({ token, refToken, exp, scheduleRefresh }) {
     accessToken = token || null;
     refreshToken = refToken ?? null;
     accessExp = exp || 0;
+
+    claimType = token ? getJwtClaim(token, "account_type") ?? null : null;
 
     persist(refreshToken, accessExp); //we all know i should use cookie req, however...
 
@@ -60,6 +66,7 @@ export const tokenStore = {
   clear() {
     accessToken = null;
     refreshToken = null;
+    claimType = null;
     accessExp = 0;
     if (refreshTimer) clearTimeout(refreshTimer);
     refreshTimer = null;
