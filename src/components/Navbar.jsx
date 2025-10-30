@@ -1,10 +1,17 @@
 import Logo from "../assets/images/Logo.png";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "@/api/hooks/useAuth";
 
 export default function Navbar() {
-  const { isAuthed } = useAuth();
+  const { isAuthed, claim } = useAuth();
+  const navigate = useNavigate();
   
+  const navigateToDashboard = () => {
+    if(!claim){ return; }
+
+    claim === "User" ? navigate("/user/dashboard") : navigate("/company/dashboard");
+  };
+
   return (
     <div className="navbar sticky top-0 z-50 bg-secondary text-secondary-content/95 shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
       <Link className="navbar-start" to="/">
@@ -34,7 +41,7 @@ export default function Navbar() {
               </svg>
             </div>
 
-            <div className="dropdown dropdown-end">
+            <div onClick={() => navigateToDashboard()} className="dropdown dropdown-end">
               <div className="avatar placeholder btn btn-ghost btn-circle border border-accent/60">
                 <div className="bg-accent text-accent-content w-10 rounded-full font-bold">
                   <span>FK</span>

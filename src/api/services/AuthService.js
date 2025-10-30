@@ -93,11 +93,12 @@ export const AuthService = {
   },
 
   async logout() {
-    try {
-      await apiJson(API.auth.logout(), { method: "POST", credentials: "include" });
-    } finally {
+    const res = await apiJson(API.auth.logout(), { method: "POST", credentials: "include" });
+    if(res.status === 200){
       tokenStore.clear();
     }
+
+    return res;
   },
 
   isAuthed() {
