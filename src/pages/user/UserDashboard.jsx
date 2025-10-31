@@ -1,6 +1,6 @@
 import { useState, useMemo, lazy, Suspense } from "react";
-import { useAuth } from "@/api/hooks/useAuth.js";
 import { useToast  } from "@/context/ToastContext";
+import { AuthService } from "@/api/services/AuthService";
 import ActivityIndicator from "@/components/ActivityIndicator.jsx";
 
 const TaskPanel = lazy(() => import("@/components/dashboard/user/TaskPanel"));
@@ -16,7 +16,6 @@ const TABS = [
 ];
 
 export default function UserDashboard() {
-  const { logout } = useAuth();
   const { showToast } = useToast();
 
   const [selected, setSelected] = useState("info");
@@ -37,7 +36,7 @@ export default function UserDashboard() {
   }, [selected]);
 
   const logoutReq = async () => {
-    const res = await logout();
+    const res = await AuthService.logout();
     if(res.status === 200){ showToast("Poprawnie wylogowano", "success"); return; }
 
     showToast("Upss... cos poszlo nie tak", "error");

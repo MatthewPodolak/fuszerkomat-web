@@ -16,6 +16,8 @@ function makeSignal({ ct, timeoutMs } = {}) {
 }
 
 export async function doRefresh({ ct, timeoutMs } = {}) {
+  const { method, url } = API.auth.refresh;
+
   const rt = tokenStore.getRefresh();
   if (!rt) {
     tokenStore.clear();
@@ -27,8 +29,8 @@ export async function doRefresh({ ct, timeoutMs } = {}) {
     const composed = makeSignal({ ct, timeoutMs });
 
     try {
-      const res = await fetch(API_ORIGIN + API.auth.refresh(), {
-        method: "POST",
+      const res = await fetch(API_ORIGIN + url, {
+        method: method,
         headers,
         body: JSON.stringify(rt),
         credentials: "omit",
@@ -84,7 +86,7 @@ async function ensureFreshToken() {
 
 
 export async function apiFetch(path, init = {}, opts = {}) {
-  const isRefreshCall = path === API.auth.refresh();
+  const isRefreshCall = path === API.auth.refresh.url;
   if (!isRefreshCall) {
     await ensureFreshToken();
   }
@@ -136,6 +138,15 @@ export async function apiFetch(path, init = {}, opts = {}) {
 export async function apiJson(path, init = {}, opts = {}) {
   const headers = new Headers(init.headers || {});
   if (init.body && !headers.has("Content-Type")) headers.set("Content-Type", "application/json");
+
+  const res = await apiFetch(path, { ...init, headers }, opts);
+  const result = await res.json();
+  return result;
+}
+
+export async function apiForm(path, init = {}, opts = {}) {
+  const headers = new Headers(init.headers || {});
+  if (headers.has("Content-Type")) headers.delete("Content-Type");
 
   const res = await apiFetch(path, { ...init, headers }, opts);
   const result = await res.json();
