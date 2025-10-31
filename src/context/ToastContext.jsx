@@ -14,7 +14,7 @@ export function ToastProvider({ children, position = "toast-end" }) {
   }, []);
 
   const showToast = useCallback(
-    (message, type = "info", { duration = 3000, id = crypto.randomUUID() } = {}) => {
+    (message = null, type = "info", { duration = 3000, id = crypto.randomUUID() } = {}) => {
       const toast = { id, message, type };
       setToasts((prev) => [...prev, toast]);
       const t = setTimeout(() => removeToast(id), duration);
@@ -35,16 +35,26 @@ export function ToastProvider({ children, position = "toast-end" }) {
       ? "alert-warning"
       : "alert-info";
 
+    const typedMsgs = (type) => {
+      switch (type) {
+        case "error":
+          return "Upss... coś poszło nie tak.";
+        case "success":
+          return "Operacja zakończona sukcesem.";
+        case "warning":
+        case "info":
+        default:
+          return;
+      }
+    }
+
   return (
     <ToastContext.Provider value={value}>
       {children}
       <div className={`toast ${position} z-9999 cursor-pointer`}>
         {toasts.map((t) => (
           <div key={t.id} className={`alert ${typeClass(t.type)} shadow-lg`} onClick={() => removeToast(t.id)}>
-            <span className="tracking-wide" >{t.message}</span>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="size-4 float-right">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
-            </svg>
+            <span className="tracking-wide" >{t.message ?? typedMsgs(t.type)}</span>
           </div>
         ))}
       </div>
