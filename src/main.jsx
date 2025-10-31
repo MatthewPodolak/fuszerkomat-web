@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import RootLayout from "./layouts/RootLayout";
 import PublicOnly from "@/layouts/guards/PublicOnly.jsx";
 import AuthOnly from "@/layouts/guards/PublicOnly.jsx";
+import UserOnly from "@/layouts/guards/UserOnly.jsx";
 import { hydrateTokenStore } from "@/api/tokenStore.js";
 import { ToastProvider } from "@/context/ToastContext.jsx";
 import GlobalErrorCatcher from "@/helpers/GlobalErrorCatcher.jsx";
@@ -20,6 +21,8 @@ const Category = lazy(() => import("./pages/Category"));
 const Register = lazy(() => import("./pages/auth/Register"));
 const Login = lazy(() => import("./pages/auth/Login"));
 
+const UserDashboard = lazy(() => import("./pages/user/UserDashboard"));
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -30,6 +33,7 @@ const router = createBrowserRouter([
       { path: "category/:category", element: <Category /> },
       { path: "register", element: <PublicOnly><Register /></PublicOnly> },
       { path: "login",    element: <PublicOnly><Login /></PublicOnly> },
+      { path: "/user/dashboard", element: <UserOnly><UserDashboard /></UserOnly>}
     ],
   },
 ]);
