@@ -5,9 +5,11 @@ import getExp from "@/helpers/jwtHelper.js";
 
 export const AuthService = {
   async login(email, password, { ct, timeoutMs } = {}) {
-    const res = await apiJson(API.auth.login(),
+    const { method, url } = API.auth.login;
+
+    const res = await apiJson(url,
       {
-        method: "POST",
+        method: method,
         body: JSON.stringify({ email, password }),
         credentials: "include",
       },
@@ -31,16 +33,17 @@ export const AuthService = {
   },
 
   async refresh() {
+    const { method, url } = API.auth.refresh;
+
     const rt = tokenStore.getRefresh();
     if (!rt) {
       tokenStore.clear();
       throw new Error("No refresh token");
     }
 
-    const data = await apiJson(
-      API.auth.refresh(),
+    const data = await apiJson(url,
       {
-        method: "POST",
+        method: method,
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(rt),
         credentials: "omit",
@@ -62,6 +65,7 @@ export const AuthService = {
   },
 
   async register(email, password, accountType, name = null, companyName = null, {ct, timeoutMs} = {}) {
+    const { method, url } = API.auth.register;
     const model = {
       email,
       password,
@@ -70,9 +74,9 @@ export const AuthService = {
       ...(accountType === "Company" ? { companyName } : {}),
     };
 
-    const res = await apiJson(API.auth.register(),
+    const res = await apiJson(url,
       {
-        method: "POST",
+        method: method,
         body: JSON.stringify(model),
       },
       { ct, timeoutMs }
@@ -95,7 +99,8 @@ export const AuthService = {
   },
 
   async logout() {
-    const res = await apiJson(API.auth.logout(), { method: "POST", credentials: "include" });
+    const { method, url } = API.auth.logout;
+    const res = await apiJson(url, { method: method, credentials: "include" });
     if(res.status === 200){
       tokenStore.clear();
     }
