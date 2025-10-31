@@ -50,11 +50,11 @@ export default function ProfileInfoPanel(){
             if (fileInputRef.current) fileInputRef.current.value = "";
             didRunRef.current = false;
             setEdited(!edited);
-            showToast("informacje zapisane", "success");
+            showToast("Informacje zapisane", "success");
             return;
         }
 
-        showToast("Upss... coś poszło nie tak.");
+        showToast(null, "error");
     };
 
     const handleAvatarClick = () => {
