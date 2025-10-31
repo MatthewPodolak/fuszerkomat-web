@@ -93,7 +93,10 @@ export async function apiFetch(path, init = {}, opts = {}) {
   const at = tokenStore.get();
   if (at) headers.set("Authorization", `Bearer ${at}`);
 
-  const composed = makeSignal({ timeoutMs: opts.timeoutMs ?? DEFAULT_TIMEOUT_MS });
+  const composed = makeSignal({
+    ct: opts.ct,
+    timeoutMs: opts.timeoutMs ?? DEFAULT_TIMEOUT_MS
+  });
 
   try {
     let res = await fetch(API_ORIGIN + path, {
@@ -105,7 +108,7 @@ export async function apiFetch(path, init = {}, opts = {}) {
 
     if (res.status === 401 && !init._retry) {
       try {
-        await doRefresh({ timeoutMs: 15000 });
+        await doRefresh({ timeoutMs: 15000, ct: opts.ct });
       } catch {
         return res;
       }

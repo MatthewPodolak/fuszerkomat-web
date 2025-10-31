@@ -1,13 +1,13 @@
 import { useState, useCallback } from "react";
-import { useAuth } from "@/api/hooks/useAuth.js";
 import { useNavigate } from "react-router-dom";
-import { useToast  } from "@/context/ToastContext";
+import { useToast } from "@/context/ToastContext";
+import { AuthService } from "@/api/services/AuthService";
+import { useMutation } from "@/api/hooks/useMutation";
 
 import ActivityIndicator from "../../components/ActivityIndicator";
 
 export default function Login() {
   const navigate = useNavigate();
-  const { isAuthed, login } = useAuth();
   const { showToast } = useToast();
 
   const [email, setEmail] = useState("");
@@ -17,6 +17,9 @@ export default function Login() {
     msg: null,
     type: null //pswd email both.
   });
+  const { mutate: login } = useMutation(
+    (vars, ctx) => AuthService.login(vars.email, vars.password, ctx)
+  );
 
   const loginReq = async () => {
     setIsLoading(true);
@@ -25,8 +28,8 @@ export default function Login() {
     if(!email.trim()){ setError({msg: "E-mail będzie w tym potrzeby...", type: "email"}); setIsLoading(false); return; }
     if(!password.trim()){ setError({msg: "Hasło się przyda!", type: "pswd"}); setIsLoading(false); return; }
 
-    var res = await login(email, password);
-    setIsLoading(false);
+    const res = await login({ email, password }, { onFinally: () => setIsLoading(false) })
+    if (res.aborted) return;
 
     if(res.status === 200){
       showToast("Witamy z powrotem!", "success");
@@ -34,12 +37,12 @@ export default function Login() {
       return;
     }
 
-    if(res.errors[0]?.code === "NotFound" || res.status === 400){
+    if(res.errors[0]?.code === "NotFound" || res.status === 404){
       setError({msg: "Podany użytkownik nie istnieje", type: "email"});
       return;
     }
 
-    if(res.errors[0]?.code === "Unauthorized" || res.status === 404){
+    if(res.errors[0]?.code === "Unauthorized" || res.status === 401){
       setError({msg: "Nieprawidłowe hasło", type: "pswd"});
       return;
     }
