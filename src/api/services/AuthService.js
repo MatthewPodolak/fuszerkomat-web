@@ -4,13 +4,14 @@ import { tokenStore } from "@/api/tokenStore.js";
 import getExp from "@/helpers/jwtHelper.js";
 
 export const AuthService = {
-  async login(email, password) {
+  async login(email, password, { ct, timeoutMs } = {}) {
     const res = await apiJson(API.auth.login(),
       {
         method: "POST",
         body: JSON.stringify({ email, password }),
         credentials: "include",
-      }
+      },
+      { ct, timeoutMs }
     );
 
     if(res.success){
@@ -60,7 +61,7 @@ export const AuthService = {
     }
   },
 
-  async register(email, password, accountType, name = null, companyName = null) {
+  async register(email, password, accountType, name = null, companyName = null, {ct, timeoutMs} = {}) {
     const model = {
       email,
       password,
@@ -73,7 +74,8 @@ export const AuthService = {
       {
         method: "POST",
         body: JSON.stringify(model),
-      }
+      },
+      { ct, timeoutMs }
     );
 
     if(res.success){

@@ -1,7 +1,8 @@
 import { useState, useCallback, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "@/api/hooks/useAuth.js";
 import { useToast  } from "@/context/ToastContext";
+import { AuthService } from "@/api/services/AuthService";
+import { useMutation } from "@/api/hooks/useMutation";
 
 import dialogs from "@/data/RegisterDialog.json";
 import ActivityIndicator from "../../components/ActivityIndicator";
@@ -10,7 +11,6 @@ import User from "../../assets/images/User.png";
 
 export default function Register() {
   const navigate = useNavigate();
-  const { register } = useAuth();
   const { showToast } = useToast();
     
   const [dialogLine, setDialogLine] = useState("");
@@ -26,7 +26,9 @@ export default function Register() {
     msg: null,
     type: null, //all name email pswd acc
   });
-
+  const { mutate: register } = useMutation(
+    (vars, ctx) => AuthService.register(vars.email, vars.password, vars.accountType, vars.userName, vars.companyName, ctx)
+  );
 
   const registerReq = async () => {
     setIsLoading(true);
@@ -45,8 +47,8 @@ export default function Register() {
     const userName = role === "fachowiec" ? null : name;
     const accountType = role === "fachowiec" ? "Company" : "User";
 
-    var res = await register(email, password, accountType, userName, companyName);
-    setIsLoading(false);
+    const res = await register({ email, password, accountType, userName, companyName }, { onFinally: () => setIsLoading(false) })
+    if (res.aborted) return;
 
     if(res.status === 200){
       showToast("Konto założone poprawnie", "success");
