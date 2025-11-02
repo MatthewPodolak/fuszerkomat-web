@@ -1,16 +1,32 @@
 import Logo from "../assets/images/Logo.png";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "@/api/hooks/useAuth";
+import { useEffect, useState } from "react";
+import { ProfileService } from "@/api/services/ProfileService";
 
 export default function Navbar() {
   const { isAuthed, claim } = useAuth();
   const navigate = useNavigate();
+
+  const [pfp, setPfp] = useState(null);
   
   const navigateToDashboard = () => {
     if(!claim){ return; }
 
     claim === "User" ? navigate("/user/dashboard") : navigate("/company/dashboard");
   };
+
+  useEffect(() => {
+    (async () => {
+      if(isAuthed){
+        const picture = await ProfileService.getProfilePicture();
+        if(picture){ setPfp(picture); return; }
+
+        const base = (claim === "User") ? "/base/user" : "/base/comp";
+        setPfp(base);
+      }
+    })();
+  }, [isAuthed]);
 
   return (
     <div className="navbar sticky top-0 z-50 bg-secondary text-secondary-content/95 shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
@@ -44,7 +60,7 @@ export default function Navbar() {
             <div onClick={() => navigateToDashboard()} className="dropdown dropdown-end">
               <div className="avatar placeholder btn btn-ghost btn-circle border border-accent/60">
                 <div className="bg-accent text-accent-content w-10 rounded-full font-bold">
-                  <span>FK</span>
+                  <img src={pfp} alt="Profile" />
                 </div>
               </div>
             </div>

@@ -11,6 +11,7 @@ function notify() { for (const fn of [...listeners]) { try { fn(); } catch {} } 
 
 const KEY_RT = "auth.rt";
 const KEY_AT_EXP = "auth.atExp";
+const KEY_PFP = "profile.pfp";
 
 function persist(rt, exp) {
   if (rt) localStorage.setItem(KEY_RT, rt);
@@ -72,6 +73,7 @@ export const tokenStore = {
     refreshTimer = null;
 
     persist(null, null);
+    localStorage.removeItem(KEY_PFP, null);
     notify();
   },
 };
