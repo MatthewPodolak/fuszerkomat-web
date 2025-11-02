@@ -33,7 +33,7 @@ export default function Category() {
                         return (
                             <Link key={tag} className="card h-42 bg-base-100 hover:shadow-lg transition cursor-pointer">
                                 <div className="card-body">
-                                    <h3 className="card-title text-base">{tag}</h3>
+                                    <h3 className="card-title text-base">{tag.name}</h3>
                                 </div>
                             </Link>
                         );

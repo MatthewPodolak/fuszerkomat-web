@@ -1,7 +1,57 @@
-import categories from "../data/Categories.json";
+import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 
+import categories from "../data/Categories.json";
+
 export default function Home() {
+  const [query, setQuery] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
+  const wrapperRef = useRef(null);
+  const allTags = categories.flatMap((cat) => cat.tags.map((tag) => ({ ...tag, category: cat.name })));
+
+  const search = (e) => {
+    const value = e.target.value.toLowerCase();
+    setQuery(value);
+
+    if (!value.trim()) { setSuggestions([]); return; }
+
+    const normalize = (s="") => s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    const matchedTags = allTags.filter(tag => {
+      const q = normalize(value);
+      const nameHit = normalize(tag.name).includes(q);
+      const kwHit = (tag.keywords || []).some(k => normalize(k).includes(q));
+      return nameHit || kwHit;
+    }).slice(0, 8);
+
+    const matchedCategories = categories.filter((cat) => cat.name.toLowerCase().includes(value)).map((cat) => ({ name: cat.name }));
+    let matched = [...matchedCategories, ...matchedTags].slice(0, 8);
+
+    if(value && matched.length === 0){ matched = [{ name: "Inne" }]; }
+
+    setSuggestions(matched);
+  };
+
+    useEffect(() => {
+      const handleClickOutside = (e) => {
+        if (wrapperRef.current && !wrapperRef.current.contains(e.target)) {
+          setSuggestions([]);
+        }
+      };
+      const handleEsc = (e) => {
+        if (e.key === "Escape") setSuggestions([]);
+      };
+
+      document.addEventListener("mousedown", handleClickOutside);
+      document.addEventListener("touchstart", handleClickOutside);
+      document.addEventListener("keydown", handleEsc);
+
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+        document.removeEventListener("touchstart", handleClickOutside);
+        document.removeEventListener("keydown", handleEsc);
+      };
+    }, []);
+
   return (
     <div className="w-full min-h-screen bg-whitesmoke flex items-center justify-center">
       <div className="w-full max-w-7xl px-6">
@@ -16,13 +66,25 @@ export default function Home() {
             Szybko, lokalnie i bez zbędnego gadania.
           </p>
 
-          <div className="w-full max-w-2xl" >
+          <div ref={wrapperRef} className="w-full max-w-2xl relative" >
             <div className="join w-full">
-              <input name="q" type="text" placeholder="Czego potrzebujesz?" className="input h-12 input-bordered join-item w-full bg-whitesmoke" />
+              <input onInput={search} value={query} name="q" type="text" placeholder="Czego potrzebujesz?" className="input h-12 input-bordered join-item w-full bg-whitesmoke" />
               <button className="btn btn-primary join-item h-12">
                 Szukaj
               </button>
             </div>
+            {suggestions && suggestions.length > 0 && (
+              <div className="absolute left-0 right-0 rounded-lg bg-whitesmoke shadow-lg z-10 text-left p-2 overflow-y-auto">
+                {suggestions.map((item, i) => (
+                  <div key={`${item.tagName || item.name}-${i}`} className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                    <p className="text-md">{item.name}</p>
+                    {item.category && (
+                      <p className="text-sm text-gray-500">{item.category}</p>
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </section>
 
