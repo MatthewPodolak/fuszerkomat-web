@@ -4,21 +4,81 @@
     "name": "Budownictwo i Remonty",
     "desc": "Szukasz ekipy do budowy, remontu lub wykończenia mieszkania? W tej kategorii znajdziesz fachowców od wszystkiego, co związane z tworzeniem i odświeżaniem przestrzeni – od murowania, tynkowania i malowania po kompleksowe remonty łazienek i kuchni. Postaw na solidnych wykonawców, którzy zrobią to raz, a dobrze.",
     "tags": [
-      "Murarz",
-      "Tynkarz",
-      "Malarz",
-      "Tapeciarz",
-      "Płytkarz",
-      "Posadzkarz",
-      "Cieśla",
-      "Dekarz",
-      "Elewacje",
-      "Docieplenia",
-      "KierownikBudowy",
-      "Architekt",
-      "RemontMieszkania",
-      "RemontŁazienki",
-      "RemontKuchni"
+      {
+        "name": "Murarz",
+        "tagName": "Murarz",
+        "keywords": ["murowanie", "ściany", "cegła", "ytong", "porotherm", "fundamenty", "nadproża", "kominy", "murow", "tani murarz", "przebudowa ściany", "ścianka działowa"]
+      },
+      {
+        "name": "Tynkarz",
+        "tagName": "Tynkarz",
+        "keywords": ["tynkowanie", "akrobata", "tynki gipsowe", "tynki cementowe", "agregat tynkarski", "gładkie ściany", "gips", "gładź pod malowanie", "tynk maszynowy", "tynk reczny", "naprawa tynku"]
+      },
+      {
+        "name": "Malarz",
+        "tagName": "Malarz",
+        "keywords": ["malowanie", "akrobata", "odmalować", "farba", "sufit", "ściany", "malowanie mieszkania", "gruntowanie", "szpachlowanie", "gładź", "tapeta", "malowanie pokoju", "malowanie drzwi"]
+      },
+      {
+        "name": "Tapeciarz",
+        "tagName": "Tapeciarz",
+        "keywords": ["tapetowanie", "tapeta", "zrywanie tapety", "fototapeta", "winylowa", "flizelinowa", "położenie tapety", "klej do tapet", "tapetowanie scian"]
+      },
+      {
+        "name": "Płytkarz",
+        "tagName": "Płytkarz",
+        "keywords": ["glazurnik", "kafelkarz", "płytki", "układanie płytek", "fuga", "gres", "łazienka płytki", "cięcie płytek", "spoinowanie", "plytkarz", "prysznic walk in"]
+      },
+      {
+        "name": "Posadzkarz",
+        "tagName": "Posadzkarz",
+        "keywords": ["posadzki", "wylewka", "anhydryt", "samopoziomująca", "betonowa", "jastrych", "szlifowanie posadzek", "posadzki przemysłowe", "wylewki pod ogrzewanie", "posadzka garaz"]
+      },
+      {
+        "name": "Cieśla",
+        "tagName": "Cieśla",
+        "keywords": ["ciesielka", "więźba dachowa", "konstrukcja dachu", "krokwie", "murłata", "szalunki", "altana drewniana", "taras drewniany", "drewno konstrukcyjne", "ciesla dach"]
+      },
+      {
+        "name": "Dekarz",
+        "tagName": "Dekarz",
+        "keywords": ["pokrycie dachu", "blachodachówka", "dachówka", "papa termozgrzewalna", "obróbki blacharskie", "rynny", "naprawa przecieku", "wyłaz dachowy", "okna dachowe", "dekarz naprawa"]
+      },
+      {
+        "name": "Elewacje",
+        "tagName": "Elewacje",
+        "keywords": ["elewacja", "tynk silikonowy", "akrylowy", "baranek", "malowanie elewacji", "mycie elewacji", "odświeżenie elewacji", "siatka klej", "ocieplenie elewacji", "fasada"]
+      },
+      {
+        "name": "Docieplenia",
+        "tagName": "Docieplenia",
+        "keywords": ["ocieplenie", "styropian", "wełna mineralna", "ETICS", "termomodernizacja", "siatka klej", "listwy przyokienne", "ocieplenie domu", "mostki termiczne", "docieplenie poddasza"]
+      },
+      {
+        "name": "Kierownik Budowy",
+        "tagName": "KierownikBudowy",
+        "keywords": ["kierbud", "kierownik", "dziennik budowy", "odbiór techniczny", "nadzór budowlany", "inspektor", "odbior mieszkania", "przegląd budowlany", "zgłoszenie budowy", "kierownik budowy"]
+      },
+      {
+        "name": "Architekt",
+        "tagName": "Architekt",
+        "keywords": ["projekt domu", "adaptacja projektu", "projekty wnętrz", "rzut", "pozwolenie na budowę", "wizualizacje", "aranżacja", "projekt budowlany", "projekt wykonawczy", "architekt krakow"]
+      },
+      {
+        "name": "Remont Mieszkania",
+        "tagName": "RemontMieszkania",
+        "keywords": ["remont", "generalny remont", "wykończenie", "pod klucz", "gładzie", "malowanie", "płytki", "elektryka hydraulika", "ekipa remontowa", "wyburzenia", "remont mieszkania"]
+      },
+      {
+        "name": "Remont Łazienki",
+        "tagName": "RemontŁazienki",
+        "keywords": ["łazienka", "prysznic", "wanna", "hydroizolacja", "płytki łazienkowe", "biały montaż", "WC", "umywalka", "kabina prysznicowa", "remont lazienki"]
+      },
+      {
+        "name": "Remont Kuchni",
+        "tagName": "RemontKuchni",
+        "keywords": ["kuchnia", "zabudowa kuchenna", "blat", "AGD pod zabudowę", "płytki nad blatem", "gładzie", "oświetlenie LED", "zlewozmywak", "remont kuchni", "fronty"]
+      }
     ]
   },
   {
@@ -26,16 +86,56 @@
     "name": "Instalacje Techniczne",
     "desc": "Tutaj znajdziesz specjalistów od elektryki, hydrauliki, gazu i innych instalacji, bez których żaden budynek nie może funkcjonować. Fachowcy zadbają o bezpieczne połączenia, modernizacje, naprawy i przeglądy systemów. Od ogrzewania podłogowego po fotowoltaikę – wszystko, co sprawia, że Twój dom działa sprawnie i oszczędnie.",
     "tags": [
-      "Elektryk",
-      "Hydraulik",
-      "Gazownik",
-      "Klimatyzacja",
-      "Wentylacja",
-      "OgrzewaniePodłogowe",
-      "Fotowoltaika",
-      "Alarmy",
-      "SmartHome",
-      "Monitoring"
+      {
+        "name": "Elektryk",
+        "tagName": "Elektryk",
+        "keywords": ["elektryka", "gniazdka", "bezpieczniki", "rozdzielnia", "oświetlenie", "przepięcie", "zwarcie", "montaż lamp", "płyta indukcyjna", "przegląd instalacji", "elektryk krakow"]
+      },
+      {
+        "name": "Hydraulik",
+        "tagName": "Hydraulik",
+        "keywords": ["hydraulika", "rury", "kran", "syfon", "WC", "spłuczka", "przeciek", "zapchane", "grzejnik", "kaloryfer", "wymiana baterii", "hydraulik 24h"]
+      },
+      {
+        "name": "Gazownik",
+        "tagName": "Gazownik",
+        "keywords": ["gaz", "piekarnik gazowy", "kuchenka", "przegląd gazowy", "uprawnienia gaz", "wyciek gazu", "montaż kuchenki", "gazownia", "protokół gazowy"]
+      },
+      {
+        "name": "Klimatyzacja",
+        "tagName": "Klimatyzacja",
+        "keywords": ["klima", "montaż klimatyzatora", "split", "multi split", "serwis klimatyzacji", "czyszczenie klimy", "nabijanie", "chłodzenie", "klimatyzator przenośny"]
+      },
+      {
+        "name": "Wentylacja",
+        "tagName": "Wentylacja",
+        "keywords": ["rekuperacja", "kratki", "kominek wentylacyjny", "przegląd wentylacji", "kanały went.", "nawiewniki", "wentylator łazienkowy", "ciąg wsteczny"]
+      },
+      {
+        "name": "Ogrzewanie Podłogowe",
+        "tagName": "OgrzewaniePodłogowe",
+        "keywords": ["podłogówka", "pętle", "rozdzielacz", "regulacja", "sterowanie", "zalewanie posadzki", "powietrzne", "elektryczne maty", "ogrzewanie podlogowe"]
+      },
+      {
+        "name": "Fotowoltaika",
+        "tagName": "Fotowoltaika",
+        "keywords": ["pv", "panele", "instalacja PV", "falownik", "dotacje", "prosument", "magazyn energii", "mycie paneli", "przegląd pv", "fotowoltaika dom"]
+      },
+      {
+        "name": "Alarmy",
+        "tagName": "Alarmy",
+        "keywords": ["alarm", "czujniki", "centrala", "satell", "abax", "syrena", "powiadomienia", "monitoring domu", "montaż alarmu", "serwis alarmu"]
+      },
+      {
+        "name": "Smart Home",
+        "tagName": "SmartHome",
+        "keywords": ["inteligentny dom", "zigbee", "zwave", "home assistant", "automatyka", "rolety smart", "oświetlenie smart", "gniazdka smart", "sterowanie głosem"]
+      },
+      {
+        "name": "Monitoring",
+        "tagName": "Monitoring",
+        "keywords": ["kamery", "cctv", "rejestrator", "ip", "montaż kamer", "podgląd telefonu", "ochrona", "wideodomofon", "system monitoringu"]
+      }
     ]
   },
   {
@@ -43,13 +143,41 @@
     "name": "Meble i Montaż",
     "desc": "Masz nowe meble i potrzebujesz pomocy przy montażu? A może marzysz o kuchni na wymiar lub nowej szafie wnękowej? Tu znajdziesz stolarzy, montażystów i specjalistów od zabudowy, którzy stworzą i złożą wszystko – od prostego regału po eleganckie wnętrze szyte na miarę Twojego stylu.",
     "tags": [
-      "MebleNaWymiar",
-      "MontażMebli",
-      "Stolarz",
-      "Drzwi",
-      "Okna",
-      "Parapety",
-      "RoletyIZasłony"
+      {
+        "name": "Meble na Wymiar",
+        "tagName": "MebleNaWymiar",
+        "keywords": ["kuchnia na wymiar", "szafa wnękowa", "zabudowa", "garderoba", "fronty", "blaty", "lakierowane", "płyta mdf", "stolarz meble", "meble kuchenne"]
+      },
+      {
+        "name": "Montaż Mebli",
+        "tagName": "MontażMebli",
+        "keywords": ["składanie mebli", "ikea", "montaż szafy", "regał", "komoda", "zawiasy", "prowadnice", "uchwyty", "montaz mebli", "transport i montaż"]
+      },
+      {
+        "name": "Stolarz",
+        "tagName": "Stolarz",
+        "keywords": ["stolarnia", "meble drewniane", "blaty dębowe", "drzwi drewniane", "renowacja drewna", "zabudowy", "schody drewniane", "naprawa mebli", "stolarz krakow"]
+      },
+      {
+        "name": "Drzwi",
+        "tagName": "Drzwi",
+        "keywords": ["montaż drzwi", "ościeżnica", "regulacja", "uszczelki", "drzwi wewnętrzne", "zewnętrzne", "antywłamaniowe", "wymiana zamka", "próg", "naprawa drzwi"]
+      },
+      {
+        "name": "Okna",
+        "tagName": "Okna",
+        "keywords": ["okna pcv", "aluminium", "drewniane", "montaż okien", "uszczelnianie", "regulacja okien", "parapety", "moskitiery", "rolety zewnętrzne", "naprawa okna"]
+      },
+      {
+        "name": "Parapety",
+        "tagName": "Parapety",
+        "keywords": ["parapet wewnętrzny", "parapet zewnętrzny", "montaż parapetów", "kamień", "konglomerat", "pcv", "blaszany", "wymiana parapetu"]
+      },
+      {
+        "name": "Rolety i Zasłony",
+        "tagName": "RoletyIZasłony",
+        "keywords": ["rolety", "plisy", "żaluzje", "zasłony", "karnisze", "roleta dzień noc", "moskitiery", "pomiar i montaż", "roleta rzymska", "firany"]
+      }
     ]
   },
   {
@@ -57,14 +185,46 @@
     "name": "Ogród i Natura",
     "desc": "Twój ogród może być oazą spokoju i piękna – wystarczy, że powierzysz go w ręce profesjonalistów. Projektanci ogrodów, ogrodnicy i monterzy systemów nawadniania pomogą Ci stworzyć lub odświeżyć zieloną przestrzeń. Od trawnika po altanę – wszystko, byś mógł cieszyć się naturą bez wysiłku.",
     "tags": [
-      "Ogrodnik",
-      "ProjektowanieOgrodu",
-      "PielęgnacjaRoślin",
-      "SystemyNawadniania",
-      "KoszenieTrawy",
-      "Tarasy",
-      "Altany",
-      "Baseny"
+      {
+        "name": "Ogrodnik",
+        "tagName": "Ogrodnik",
+        "keywords": ["pielęgnacja ogrodu", "przycinanie", "żywopłot", "nawożenie", "nasadzenia", "odchwaszczanie", "sprzątanie ogrodu", "zima", "ogrodnik krakow"]
+      },
+      {
+        "name": "Projektowanie Ogrodu",
+        "tagName": "ProjektowanieOgrodu",
+        "keywords": ["projekt ogrodu", "aranżacja ogrodu", "wizualizacja", "nawierzchnie", "rabaty", "skalniak", "oświetlenie ogrodowe", "trawnik z rolki", "mała architektura"]
+      },
+      {
+        "name": "Pielęgnacja Roślin",
+        "tagName": "PielęgnacjaRoślin",
+        "keywords": ["cięcie roślin", "choroby roślin", "opryski", "nawozy", "podlewanie", "przesadzanie", "doniczkowe", "ochrona roślin"]
+      },
+      {
+        "name": "Systemy Nawadniania",
+        "tagName": "SystemyNawadniania",
+        "keywords": ["nawadnianie ogrodu", "zraszacze", "kroplujące", "sterownik", "montaż nawadniania", "serwis nawadniania", "podlewanie automatyczne"]
+      },
+      {
+        "name": "Koszenie Trawy",
+        "tagName": "KoszenieTrawy",
+        "keywords": ["koszenie", "kosiarka", "trawa", "pielęgnacja trawnika", "wertykulacja", "areacja", "krawędzie trawnika", "robot koszący"]
+      },
+      {
+        "name": "Tarasy",
+        "tagName": "Tarasy",
+        "keywords": ["taras", "kompozyt", "deska tarasowa", "drewniany", "zadaszenie", "olejowanie", "budowa tarasu", "naprawa tarasu", "taras na słupach"]
+      },
+      {
+        "name": "Altany",
+        "tagName": "Altany",
+        "keywords": ["altana", "wiata", "pergola", "drewniana altana", "budowa altany", "zadaszenie ogrodowe", "letnia kuchnia", "altana ogrodowa"]
+      },
+      {
+        "name": "Baseny",
+        "tagName": "Baseny",
+        "keywords": ["montaż basenu", "serwis basenu", "chemia basenowa", "pompa", "filtr piaskowy", "basen ogrodowy", "zadaszenie basenu", "naprawa basenu"]
+      }
     ]
   },
   {
@@ -72,12 +232,36 @@
     "name": "Transport i Logistyka",
     "desc": "Potrzebujesz przewieźć meble, zamówienie lub całe biuro? W tej kategorii znajdziesz firmy transportowe, kierowców i kurierów, którzy zajmą się Twoim ładunkiem od drzwi do drzwi. Bezpiecznie, terminowo i w dobrej cenie – zarówno lokalnie, jak i za granicą.",
     "tags": [
-      "TransportKrajowy",
-      "TransportMiędzynarodowy",
-      "Przeprowadzki",
-      "Kurier",
-      "Taxi",
-      "Dostawa"
+      {
+        "name": "Transport Krajowy",
+        "tagName": "TransportKrajowy",
+        "keywords": ["transport polska", "przewóz rzeczy", "dostawy", "bus", "palety", "ładunek", "door to door", "transport mebli", "krajowy transport"]
+      },
+      {
+        "name": "Transport Międzynarodowy",
+        "tagName": "TransportMiędzynarodowy",
+        "keywords": ["międzynarodowy", "spedycja", "UE", "export", "import", "CMR", "celne", "przewóz zagranica", "transport europa", "tir"]
+      },
+      {
+        "name": "Przeprowadzki",
+        "tagName": "Przeprowadzki",
+        "keywords": ["kartony", "pakowanie", "wyniesienie", "transport mebli", "demontaż", "montaż mebli", "windy", "pianino", "przeprowadzka mieszkania", "firma przeprowadzkowa"]
+      },
+      {
+        "name": "Kurier",
+        "tagName": "Kurier",
+        "keywords": ["przesyłki", "paczki", "odbiór paczki", "nadanie", "same day", "door to door", "śledzenie", "kurier miejski", "dostawa paczki"]
+      },
+      {
+        "name": "Taxi",
+        "tagName": "Taxi",
+        "keywords": ["taksówka", "przewóz osób", "uber", "bolt", "lotnisko", "nocna jazda", "taxi bagażowe", "zamów taxi"]
+      },
+      {
+        "name": "Dostawa",
+        "tagName": "Dostawa",
+        "keywords": ["dowóz", "delivery", "kurier lokalny", "dostawa jedzenia", "dostawa zakupów", "ostatnia mila", "szybka dostawa", "kurier na już"]
+      }
     ]
   },
   {
@@ -85,16 +269,56 @@
     "name": "IT i Usługi Zdalne",
     "desc": "Świat cyfrowy nie ma przed nimi tajemnic – programiści, graficy, copywriterzy, administratorzy systemów i inni specjaliści online. Niezależnie od tego, czy potrzebujesz strony internetowej, sklepu online, tekstów SEO czy pomocy z komputerem – tutaj znajdziesz profesjonalistów, którzy działają zdalnie, szybko i skutecznie.",
     "tags": [
-      "Programowanie",
-      "TworzenieStron",
-      "SEO",
-      "Copywriting",
-      "Grafika",
-      "SocialMedia",
-      "MontażWideo",
-      "AdministracjaSystemami",
-      "PomocIT",
-      "WirtualnyAsystent"
+      {
+        "name": "Programowanie",
+        "tagName": "Programowanie",
+        "keywords": ["developer", "programista", "aplikacja", "strona", "backend", "frontend", "fullstack", "react", "node", "python", "java", "apka"]
+      },
+      {
+        "name": "Tworzenie Stron",
+        "tagName": "TworzenieStron",
+        "keywords": ["strona www", "sklep internetowy", "landing page", "wordpress", "woocommerce", "hosting", "domena", "optymalizacja strony", "modernizacja strony"]
+      },
+      {
+        "name": "SEO",
+        "tagName": "SEO",
+        "keywords": ["pozycjonowanie", "audyt seo", "link building", "content seo", "meta tagi", "techniczne seo", "core web vitals", "frazy kluczowe", "sem"]
+      },
+      {
+        "name": "Copywriting",
+        "tagName": "Copywriting",
+        "keywords": ["teksty", "artykuły", "opisy produktów", "hasła", "naming", "blog", "content marketing", "tekst na stronę", "redakcja", "korekta"]
+      },
+      {
+        "name": "Grafika",
+        "tagName": "Grafika",
+        "keywords": ["grafik", "plakaty", "ulotki", "banery", "social media grafiki", "DTP", "retusz", "ilustracja", "key visual", "druk"]
+      },
+      {
+        "name": "Social Media",
+        "tagName": "SocialMedia",
+        "keywords": ["facebook", "instagram", "tiktok", "reels", "strategie", "plan treści", "community", "kampanie", "ads", "moderacja komentarzy"]
+      },
+      {
+        "name": "Montaż Wideo",
+        "tagName": "MontażWideo",
+        "keywords": ["montaż filmu", "postprodukcja", "kolor korekcja", "napisy", "lektor", "shorty", "reklama wideo", "after effects", "premiere pro"]
+      },
+      {
+        "name": "Administracja Systemami",
+        "tagName": "AdministracjaSystemami",
+        "keywords": ["sysadmin", "linux", "serwer", "backup", "monitoring", "docker", "kubernetes", "firewall", "vpn", "devops", "aws", "azure"]
+      },
+      {
+        "name": "Pomoc IT",
+        "tagName": "PomocIT",
+        "keywords": ["naprawa komputera", "formatowanie", "odzyskiwanie danych", "virus", "drukarka", "konfiguracja", "wifi", "zdalna pomoc", "it support"]
+      },
+      {
+        "name": "Wirtualny Asystent",
+        "tagName": "WirtualnyAsystent",
+        "keywords": ["asysta online", "kalendarz", "maile", "research", "wystawianie faktur", "obsługa klienta", "transkrypcja", "przepisywanie", "VA"]
+      }
     ]
   },
   {
@@ -102,13 +326,41 @@
     "name": "Projektowanie i Kreatywność",
     "desc": "Jeśli potrzebujesz świeżego pomysłu, profesjonalnego projektu lub wizualnej oprawy dla swojego pomysłu – to miejsce dla Ciebie. Architekci wnętrz, graficy, fotografowie, montażyści i animatorzy stworzą wyjątkowe dzieła, które zachwycą Twoich klientów i gości. Kreatywność bez granic – od logo po film reklamowy.",
     "tags": [
-      "ArchitektWnętrz",
-      "Grafik",
-      "Fotograf",
-      "Wideo",
-      "Branding",
-      "UXUI",
-      "Animacja2D3D"
+      {
+        "name": "Architekt Wnętrz",
+        "tagName": "ArchitektWnętrz",
+        "keywords": ["projekt wnętrza", "aranżacja", "wizualizacje 3D", "home staging", "dobór materiałów", "koncepcja", "pod klucz", "plan elektryki", "meble na wymiar"]
+      },
+      {
+        "name": "Grafik",
+        "tagName": "Grafik",
+        "keywords": ["logo", "brandbook", "baner", "ulotka", "plakat", "key visual", "księga znaku", "oprawa graficzna", "projekt graficzny", "identyfikacja"]
+      },
+      {
+        "name": "Fotograf",
+        "tagName": "Fotograf",
+        "keywords": ["sesja zdjęciowa", "fotografia produktowa", "portret", "ślub", "event", "retusz", "studio", "plener", "reportaż", "fotograf krakow"]
+      },
+      {
+        "name": "Wideo",
+        "tagName": "Wideo",
+        "keywords": ["produkcja wideo", "nagrania", "teledysk", "spot reklamowy", "studio filmowe", "operator kamery", "dron", "film promocyjny"]
+      },
+      {
+        "name": "Branding",
+        "tagName": "Branding",
+        "keywords": ["identyfikacja marki", "logo", "nazwa", "strategia marki", "brandbook", "system identyfikacji", "rebranding", "wizualny styl", "tożsamość marki"]
+      },
+      {
+        "name": "UX/UI",
+        "tagName": "UXUI",
+        "keywords": ["makiety", "prototypy", "badania UX", "testy użyteczności", "figma", "design system", "audyt UX", "interfejs", "user flow"]
+      },
+      {
+        "name": "Animacja 2D/3D",
+        "tagName": "Animacja2D3D",
+        "keywords": ["motion design", "animacja", "after effects", "3d", "blender", "cinema4d", "explainery", "intro", "render", "animacje produktowe"]
+      }
     ]
   },
   {
@@ -116,13 +368,41 @@
     "name": "Edukacja i Szkolenia",
     "desc": "Rozwijaj swoje umiejętności i odkrywaj nowe pasje. Korepetytorzy, trenerzy i nauczyciele pomogą Ci osiągnąć cele edukacyjne – od nauki języków i muzyki po kursy programowania i szkolenia zawodowe. Dla dzieci, dorosłych i firm – edukacja dopasowana do Twoich potrzeb.",
     "tags": [
-      "KorepetycjeMatematyka",
-      "KorepetycjeAngielski",
-      "KursProgramowania",
-      "NaukaMuzyki",
-      "NaukaTańca",
-      "SzkoleniaZawodowe",
-      "Tłumaczenia"
+      {
+        "name": "Korepetycje Matematyka",
+        "tagName": "KorepetycjeMatematyka",
+        "keywords": ["matma", "matura z matematyki", "egzamin ósmioklasisty", "zadania", "analiza", "algebra", "geometria", "statystyka", "korepetycje matma", "lekcje online"]
+      },
+      {
+        "name": "Korepetycje Angielski",
+        "tagName": "KorepetycjeAngielski",
+        "keywords": ["angielski", "konwersacje", "matura angielski", "business english", "przygotowanie do egzaminu", "gramatyka", "słownictwo", "native speaker", "kurs online"]
+      },
+      {
+        "name": "Kurs Programowania",
+        "tagName": "KursProgramowania",
+        "keywords": ["bootcamp", "nauka kodowania", "python kurs", "frontend kurs", "java kurs", "zadania programowanie", "kurs online", "mentoring IT"]
+      },
+      {
+        "name": "Nauka Muzyki",
+        "tagName": "NaukaMuzyki",
+        "keywords": ["gitara", "pianino", "skrzypce", "wokal", "teoria muzyki", "solfeż", "lekcje muzyki", "nauka instrumentu", "studio"]
+      },
+      {
+        "name": "Nauka Tańca",
+        "tagName": "NaukaTańca",
+        "keywords": ["taniec", "taniec towarzyski", "hip hop", "tango", "salsa", "bachata", "lekcje tańca", "choreografia", "zajęcia taneczne"]
+      },
+      {
+        "name": "Szkolenia Zawodowe",
+        "tagName": "SzkoleniaZawodowe",
+        "keywords": ["kursy zawodowe", "uprawnienia", "bhp szkolenia", "operator wózka", "spawacz kurs", "kursy online", "certyfikat", "praktyczne szkolenie"]
+      },
+      {
+        "name": "Tłumaczenia",
+        "tagName": "Tłumaczenia",
+        "keywords": ["tłumacz", "przysięgły", "tłumaczenie dokumentów", "pl ang", "ang pl", "techniczne tłumaczenia", "korekta językowa", "lokalizacja"]
+      }
     ]
   },
   {
@@ -130,13 +410,41 @@
     "name": "Usługi dla Firm",
     "desc": "Prowadzisz firmę i potrzebujesz wsparcia? W tej kategorii znajdziesz specjalistów od marketingu, księgowości, kadr, BHP i sprzedaży. Outsourcing pozwala zaoszczędzić czas i pieniądze – znajdź sprawdzonych partnerów biznesowych, którzy pomogą Ci rozwijać działalność i osiągać lepsze wyniki.",
     "tags": [
-      "Marketing",
-      "Księgowość",
-      "KadryIPłace",
-      "BHP",
-      "SprzedażTelefoniczna",
-      "CallCenter",
-      "DoradztwoBiznesowe"
+      {
+        "name": "Marketing",
+        "tagName": "Marketing",
+        "keywords": ["kampanie", "reklama", "google ads", "facebook ads", "strategie", "content", "branding", "analityka", "lead generation", "marketing b2b"]
+      },
+      {
+        "name": "Księgowość",
+        "tagName": "Księgowość",
+        "keywords": ["biuro rachunkowe", "księgowa", "KPiR", "kadry płace", "JPK", "ZUS", "VAT", "rozliczenia", "sprawozdania", "księgowość online"]
+      },
+      {
+        "name": "Kadry i Płace",
+        "tagName": "KadryIPłace",
+        "keywords": ["umowy", "listy płac", "PIT", "ZUS DRA", "akta osobowe", "rekrutacja", "szkolenia bhp", "regulaminy pracy", "kadry place"]
+      },
+      {
+        "name": "BHP",
+        "tagName": "BHP",
+        "keywords": ["szkolenia bhp", "ocena ryzyka", "instrukcje stanowiskowe", "przegląd bhp", "ppoż", "pierwsza pomoc", "audyt bhp", "służba bhp"]
+      },
+      {
+        "name": "Sprzedaż Telefoniczna",
+        "tagName": "SprzedażTelefoniczna",
+        "keywords": ["telemarketing", "call center", "lead", "skrypty sprzedażowe", "cold calling", "uma wianie spotkań", "inside sales", "sprzedaz telefoniczna"]
+      },
+      {
+        "name": "Call Center",
+        "tagName": "CallCenter",
+        "keywords": ["infolinia", "obsługa klienta", "helpdesk", "outsourcing", "call center sprzedaż", "badania CATI", "ankiety", "kampanie telefoniczne"]
+      },
+      {
+        "name": "Doradztwo Biznesowe",
+        "tagName": "DoradztwoBiznesowe",
+        "keywords": ["strategia", "scaling", "lean", "analiza procesów", "audyt", "model biznesowy", "dotacje", "optmalizacja kosztów", "biznes plan"]
+      }
     ]
   },
   {
@@ -144,14 +452,46 @@
     "name": "Finanse i Prawo",
     "desc": "Porady prawne, pomoc w finansach, rozliczeniach i umowach – wszystko w jednym miejscu. Znajdź adwokata, notariusza, doradcę podatkowego lub księgowego, który zajmie się Twoimi sprawami profesjonalnie i dyskretnie. Bezpiecznie, zgodnie z przepisami i z pełnym zaufaniem.",
     "tags": [
-      "DoradcaFinansowy",
-      "Kredyty",
-      "Leasing",
-      "Księgowy",
-      "Adwokat",
-      "Notariusz",
-      "RadcaPrawny",
-      "DoradcaPodatkowy"
+      {
+        "name": "Doradca Finansowy",
+        "tagName": "DoradcaFinansowy",
+        "keywords": ["plan finansowy", "inwestycje", "ubezpieczenia", "emerytura", "kredyt hipoteczny", "oszczędzanie", "analiza finansowa", "fundusze", "doradztwo finansowe"]
+      },
+      {
+        "name": "Kredyty",
+        "tagName": "Kredyty",
+        "keywords": ["kredyt", "hipoteczny", "gotówkowy", "konsolidacja", "zdolność kredytowa", "oprocentowanie", "wniosek kredytowy", "raty", "pożyczka"]
+      },
+      {
+        "name": "Leasing",
+        "tagName": "Leasing",
+        "keywords": ["leasing samochodu", "leasing sprzętu", "operacyjny", "finansowy", "wykup", "raty leasingowe", "oferta leasing", "leasing maszyn"]
+      },
+      {
+        "name": "Księgowy",
+        "tagName": "Księgowy",
+        "keywords": ["księgowa", "rozliczenia", "KPiR", "VAT", "PIT", "CIT", "kadry i płace", "sprawozdania", "biuro rachunkowe", "księgowy krakow"]
+      },
+      {
+        "name": "Adwokat",
+        "tagName": "Adwokat",
+        "keywords": ["prawnik", "rozwód", "spadek", "umowy", "pozew", "odszkodowanie", "porada prawna", "karny", "cywilny", "gospodarczy"]
+      },
+      {
+        "name": "Notariusz",
+        "tagName": "Notariusz",
+        "keywords": ["akt notarialny", "darowizna", "sprzedaż mieszkania", "poświadczenie", "pełnomocnictwo", "testament", "umowa", "repertorium", "taksa notarialna"]
+      },
+      {
+        "name": "Radca Prawny",
+        "tagName": "RadcaPrawny",
+        "keywords": ["porady prawne", "obsługa firm", "umowy", "mediacje", "negocjacje", "opinie prawne", "spory gospodarcze", "radca prawny krakow"]
+      },
+      {
+        "name": "Doradca Podatkowy",
+        "tagName": "DoradcaPodatkowy",
+        "keywords": ["podatki", "VAT", "PIT", "CIT", "interpretacja", "optymalizacja podatkowa", "kontrola skarbowa", "planowanie podatkowe", "doradca podatkowy"]
+      }
     ]
   },
   {
@@ -159,15 +499,51 @@
     "name": "Zdrowie i Uroda",
     "desc": "Zadbaj o swoje ciało i samopoczucie. W tej kategorii znajdziesz specjalistów od pielęgnacji, masażu, kosmetyki, fryzjerstwa i dietetyki. Odkryj miejsce, gdzie zdrowie i piękno idą w parze, a profesjonaliści pomogą Ci poczuć się pewnie, świeżo i zrelaksowanie każdego dnia.",
     "tags": [
-      "Fryzjer",
-      "Kosmetyczka",
-      "Masaż",
-      "Dietetyk",
-      "TrenerPersonalny",
-      "ManicurePedicure",
-      "Makijaż",
-      "Spa",
-      "Psycholog"
+      {
+        "name": "Fryzjer",
+        "tagName": "Fryzjer",
+        "keywords": ["strzyżenie", "koloryzacja", "balayage", "ombre", "modelowanie", "upięcia", "keratyna", "regeneracja włosów", "fryzjer męski", "barber"]
+      },
+      {
+        "name": "Kosmetyczka",
+        "tagName": "Kosmetyczka",
+        "keywords": ["manicure", "pedicure", "henna", "brwi", "rzęsy", "oczyszczanie", "peeling", "zabiegi na twarz", "mezoterapia", "kosmetolog"]
+      },
+      {
+        "name": "Masaż",
+        "tagName": "Masaż",
+        "keywords": ["masaż klasyczny", "relaksacyjny", "leczniczy", "tkanek głębokich", "limfatyczny", "sportowy", "kręgosłup", "plecy", "masażysta do domu"]
+      },
+      {
+        "name": "Dietetyk",
+        "tagName": "Dietetyk",
+        "keywords": ["dieta", "jadłospis", "odchudzanie", "insulinooporność", "hashimoto", "wegetariańska", "analiza składu ciała", "plan żywieniowy", "diety online"]
+      },
+      {
+        "name": "Trener Personalny",
+        "tagName": "TrenerPersonalny",
+        "keywords": ["trening", "siłownia", "redukcja", "masa", "plan treningowy", "kettlebell", "mobilność", "core", "bieganie", "trener personalny krakow"]
+      },
+      {
+        "name": "Manicure i Pedicure",
+        "tagName": "ManicurePedicure",
+        "keywords": ["hybryda", "żel", "przedłużanie paznokci", "frezarka", "spa dłoni", "spa stóp", "pedicure leczniczy", "manicure french"]
+      },
+      {
+        "name": "Makijaż",
+        "tagName": "Makijaż",
+        "keywords": ["makijaż okolicznościowy", "ślubny", "wieczorowy", "próbny", "makeup artist", "stylizacja brwi", "konturowanie", "sesje zdjęciowe makijaż"]
+      },
+      {
+        "name": "Spa",
+        "tagName": "Spa",
+        "keywords": ["zabiegi spa", "relaks", "sauna", "jacuzzi", "masaż w spa", "rytuały", "voucher", "dzień w spa", "wellness"]
+      },
+      {
+        "name": "Psycholog",
+        "tagName": "Psycholog",
+        "keywords": ["terapia", "konsultacja", "depresja", "lęk", "stres", "psychoterapia", "terapeuta", "online", "para", "psycholog dziecięcy"]
+      }
     ]
   },
   {
@@ -175,13 +551,41 @@
     "name": "Motoryzacja",
     "desc": "Dla kierowców i pasjonatów motoryzacji. Mechanicy, lakiernicy, diagności i specjaliści od detailingu zadbają o Twój samochód jak o własny. Niezależnie od tego, czy potrzebujesz przeglądu, naprawy, czyszczenia czy tuningu – Twój pojazd będzie w najlepszych rękach.",
     "tags": [
-      "Mechanik",
-      "Lakiernik",
-      "Myjnia",
-      "Detailing",
-      "SerwisOpon",
-      "Blacharz",
-      "Diagnosta"
+      {
+        "name": "Mechanik",
+        "tagName": "Mechanik",
+        "keywords": ["naprawa auta", "diagnostyka", "wymiana oleju", "rozrząd", "hamulce", "zawieszenie", "sprzęgło", "mechanik samochodowy", "warsztat"]
+      },
+      {
+        "name": "Lakiernik",
+        "tagName": "Lakiernik",
+        "keywords": ["lakierowanie", "polerka", "blacharka", "kolor", "malowanie elementu", "zaprawka", "szpachla", "bezbarwny", "komora lakiernicza"]
+      },
+      {
+        "name": "Myjnia",
+        "tagName": "Myjnia",
+        "keywords": ["mycie auta", "detailing", "wnętrze", "pranie tapicerki", "wosk", "ceramika", "odkurzanie", "na błysk", "myjnia parowa"]
+      },
+      {
+        "name": "Detailing",
+        "tagName": "Detailing",
+        "keywords": ["korekty lakieru", "powłoka ceramiczna", "ochrona lakieru", "wnętrze detailing", "pranie foteli", "dekontaminacja", "polerowanie", "quick detailer"]
+      },
+      {
+        "name": "Serwis Opon",
+        "tagName": "SerwisOpon",
+        "keywords": ["wulkanizacja", "wymiana opon", "wyważanie", "przechowalnia opon", "opony zimowe", "letnie", "naprawa przebicia", "felgi", "opony runflat"]
+      },
+      {
+        "name": "Blacharz",
+        "tagName": "Blacharz",
+        "keywords": ["naprawa karoserii", "wgniecenia", "korozja", "spawanie blach", "pasowanie elementów", "szkiełkowanie", "naprawy powypadkowe", "prostownik ramy"]
+      },
+      {
+        "name": "Diagnosta",
+        "tagName": "Diagnosta",
+        "keywords": ["przegląd techniczny", "SKP", "badanie techniczne", "diagnostyka komputerowa", "emisja spalin", "hak", "zmiana konstrukcyjna", "gaz w aucie"]
+      }
     ]
   },
   {
@@ -189,12 +593,36 @@
     "name": "Sprzątanie",
     "desc": "Czysto, świeżo i pachnąco – bez stresu i wysiłku. Profesjonalne ekipy sprzątające zajmą się domem, biurem lub obiektem po remoncie. Mycie okien, pranie dywanów, czyszczenie tapicerki – wszystko, byś mógł cieszyć się idealnym porządkiem każdego dnia.",
     "tags": [
-      "SprzątanieDomów",
-      "SprzątanieBiur",
-      "MycieOkien",
-      "CzyszczenieTapicerki",
-      "Ozonowanie",
-      "PranieDywanów"
+      {
+        "name": "Sprzątanie Domów",
+        "tagName": "SprzątanieDomów",
+        "keywords": ["sprzatanie", "porządki", "odkurzanie", "mycie podłóg", "kurze", "kuchnia", "łazienka", "po remoncie", "sprzątanie cykliczne", "jednorazowe"]
+      },
+      {
+        "name": "Sprzątanie Biur",
+        "tagName": "SprzątanieBiur",
+        "keywords": ["biuro", "serwis sprzątający", "wieczorne sprzątanie", "korytarze", "open space", "okresowe", "dezynfekcja", "mycie podłóg", "kosze"]
+      },
+      {
+        "name": "Mycie Okien",
+        "tagName": "MycieOkien",
+        "keywords": ["okna", "ramy", "parapety", "witryny", "drabina", "mycie szyb", "odkamienianie", "mycie po remoncie", "okna balkonowe"]
+      },
+      {
+        "name": "Czyszczenie Tapicerki",
+        "tagName": "CzyszczenieTapicerki",
+        "keywords": ["pranie kanapy", "pranie narożnika", "tapicerka materiałowa", "ekstrakcyjne", "odplamianie", "fotele", "mata", "czyszczenie krzeseł"]
+      },
+      {
+        "name": "Ozonowanie",
+        "tagName": "Ozonowanie",
+        "keywords": ["dezynfekcja", "usuwanie zapachów", "pleśń", "bakterie", "samochód ozonowanie", "mieszkanie", "ozonator", "odgrzybianie"]
+      },
+      {
+        "name": "Pranie Dywanów",
+        "tagName": "PranieDywanów",
+        "keywords": ["pralnia dywanów", "czyszczenie dywanu", "odplamianie", "odkurzanie", "rolka do sierści", "suszenie", "transport dywanów", "pranie wykładziny"]
+      }
     ]
   },
   {
@@ -202,13 +630,41 @@
     "name": "Imprezy i Rozrywka",
     "desc": "Organizujesz wesele, urodziny, imprezę firmową lub koncert? Znajdziesz tu DJ-ów, zespoły muzyczne, fotografów, animatorów i firmy eventowe, które zajmą się wszystkim od A do Z. Zadbaj o dekoracje, catering i atmosferę – tak, by Twoja impreza była niezapomniana.",
     "tags": [
-      "DJ",
-      "ZespółMuzyczny",
-      "FotografNaWesele",
-      "OrganizacjaEventu",
-      "Catering",
-      "Dekoracje",
-      "AnimatorDlaDzieci"
+      {
+        "name": "DJ",
+        "tagName": "DJ",
+        "keywords": ["dj na wesele", "muzyka", "prowadzenie imprezy", "nagłośnienie", "oświetlenie", "sety", "playlista", "dj event", "dj krakow"]
+      },
+      {
+        "name": "Zespół Muzyczny",
+        "tagName": "ZespółMuzyczny",
+        "keywords": ["kapela", "live band", "wesele", "event", "covery", "wokal", "skład zespołu", "nagłośnienie", "zespół na imprezę"]
+      },
+      {
+        "name": "Fotograf na Wesele",
+        "tagName": "FotografNaWesele",
+        "keywords": ["fotograf ślubny", "reportaż ślubny", "plener ślubny", "album", "galeria online", "filmowiec", "pakiet ślubny", "zdjęcia ślubne"]
+      },
+      {
+        "name": "Organizacja Eventu",
+        "tagName": "OrganizacjaEventu",
+        "keywords": ["event manager", "impreza firmowa", "konferencja", "scenografia", "logistyka", "atrakcje", "harmonogram", "wynajem sprzętu", "agencja eventowa"]
+      },
+      {
+        "name": "Catering",
+        "tagName": "Catering",
+        "keywords": ["jedzenie", "bufet", "finger food", "obiady", "kolacja", "weg", "vegan", "obsługa", "kelnerzy", "catering na wesele"]
+      },
+      {
+        "name": "Dekoracje",
+        "tagName": "Dekoracje",
+        "keywords": ["dekoracja sali", "balony", "ścianka", "kwiaty", "girlandy", "światła", "plan stołów", "druk dodatków", "dekoratorka"]
+      },
+      {
+        "name": "Animator dla Dzieci",
+        "tagName": "AnimatorDlaDzieci",
+        "keywords": ["urodziny", "zabawy", "malowanie buziek", "balony skręcane", "konkursy", "pokaz baniek", "opiekun", "animacje dla dzieci"]
+      }
     ]
   },
   {
@@ -216,19 +672,53 @@
     "name": "Złota Rączka",
     "desc": "Nie ma rzeczy, której nie da się naprawić! Złote rączki pomogą Ci w drobnych i większych usterkach domowych – od napraw drzwi i okien po montaż sprzętu AGD. Szybko, solidnie i bez zbędnego gadania – po prostu naprawione tak, jak trzeba.",
     "tags": [
-      "NaprawyDomowe",
-      "MontażAGD",
-      "NaprawaAGD",
-      "NaprawaDrzwi",
-      "NaprawaOkien",
-      "Spawanie",
-      "Ślusarz"
+      {
+        "name": "Naprawy Domowe",
+        "tagName": "NaprawyDomowe",
+        "keywords": ["usterki", "naprawa drobna", "montaż", "wiercenie", "składanie", "półki", "karnisze", "szafki", "uszczelki", "złota rączka"]
+      },
+      {
+        "name": "Montaż AGD",
+        "tagName": "MontażAGD",
+        "keywords": ["zabudowa agd", "zmywarka", "piekarnik", "płyta indukcyjna", "okap", "pralka", "podłączenie", "uszczelnienie", "montaz agd"]
+      },
+      {
+        "name": "Naprawa AGD",
+        "tagName": "NaprawaAGD",
+        "keywords": ["serwis agd", "pralka nie działa", "zmywarka błąd", "lodówka nie chłodzi", "piec gazowy", "diagnostyka", "części zamienne", "naprawa sprzętu"]
+      },
+      {
+        "name": "Naprawa Drzwi",
+        "tagName": "NaprawaDrzwi",
+        "keywords": ["zawiasy", "zamek", "wkładka", "klamka", "regulacja", "skrzypienie", "uszczelka", "próg", "wgniecenie", "naprawa ościeżnicy"]
+      },
+      {
+        "name": "Naprawa Okien",
+        "tagName": "NaprawaOkien",
+        "keywords": ["regulacja okna", "uszczelki", "okucia", "rozszczelnianie", "zawias", "przeciąg", "wymiana szyby", "moskitiera", "uchylne nie działa"]
+      },
+      {
+        "name": "Spawanie",
+        "tagName": "Spawanie",
+        "keywords": ["spawacz", "mig", "mag", "tig", "stal", "aluminium", "barierki", "naprawa bramy", "ogrodzenie", "spawanie konstrukcji"]
+      },
+      {
+        "name": "Ślusarz",
+        "tagName": "Ślusarz",
+        "keywords": ["otwieranie drzwi", "awaryjne otwarcie", "wymiana zamka", "wkładka", "klucze", "antywłamaniowe", "serwis zamków", "zatrzasniete drzwi"]
+      }
     ]
   },
   {
     "category": "Other",
     "name": "Inne",
     "desc": "Nie znalazłeś odpowiedniej kategorii? Tutaj możesz dodać lub znaleźć nietypowe usługi, które nie mieszczą się w żadnej innej grupie. Od drobnych zleceń po unikalne pomysły – każdy fachowiec znajdzie tu swoje miejsce.",
-    "tags": ["Other"]
+    "tags": [
+      {
+        "name": "Inne",
+        "tagName": "Other",
+        "keywords": ["pozostałe", "nietypowe", "inne usługi", "na zapytanie", "custom", "specjalne zlecenie"]
+      }
+    ]
   }
 ]
