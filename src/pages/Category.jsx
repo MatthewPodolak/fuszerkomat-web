@@ -31,7 +31,7 @@ export default function Category() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 py-2 mb-12 mt-12">
                     {selectedCategory.tags.map((tag) => {
                         return (
-                            <Link key={tag} className="card h-42 bg-base-100 hover:shadow-lg transition cursor-pointer">
+                            <Link key={tag.name} className="card h-42 bg-base-100 hover:shadow-lg transition cursor-pointer">
                                 <div className="card-body">
                                     <h3 className="card-title text-base">{tag.name}</h3>
                                 </div>

@@ -139,7 +139,7 @@
     ]
   },
   {
-    "category": "MebleIMontaz",
+    "category": "MebleIMontaż",
     "name": "Meble i Montaż",
     "desc": "Masz nowe meble i potrzebujesz pomocy przy montażu? A może marzysz o kuchni na wymiar lub nowej szafie wnękowej? Tu znajdziesz stolarzy, montażystów i specjalistów od zabudowy, którzy stworzą i złożą wszystko – od prostego regału po eleganckie wnętrze szyte na miarę Twojego stylu.",
     "tags": [
@@ -181,7 +181,7 @@
     ]
   },
   {
-    "category": "OgrodINatura",
+    "category": "OgródINatura",
     "name": "Ogród i Natura",
     "desc": "Twój ogród może być oazą spokoju i piękna – wystarczy, że powierzysz go w ręce profesjonalistów. Projektanci ogrodów, ogrodnicy i monterzy systemów nawadniania pomogą Ci stworzyć lub odświeżyć zieloną przestrzeń. Od trawnika po altanę – wszystko, byś mógł cieszyć się naturą bez wysiłku.",
     "tags": [
@@ -322,7 +322,7 @@
     ]
   },
   {
-    "category": "ProjektowanieIKreatywnosc",
+    "category": "ProjektowanieIKreatywność",
     "name": "Projektowanie i Kreatywność",
     "desc": "Jeśli potrzebujesz świeżego pomysłu, profesjonalnego projektu lub wizualnej oprawy dla swojego pomysłu – to miejsce dla Ciebie. Architekci wnętrz, graficy, fotografowie, montażyści i animatorzy stworzą wyjątkowe dzieła, które zachwycą Twoich klientów i gości. Kreatywność bez granic – od logo po film reklamowy.",
     "tags": [
@@ -406,7 +406,7 @@
     ]
   },
   {
-    "category": "UslugiDlaFirm",
+    "category": "UsługiDlaFirm",
     "name": "Usługi dla Firm",
     "desc": "Prowadzisz firmę i potrzebujesz wsparcia? W tej kategorii znajdziesz specjalistów od marketingu, księgowości, kadr, BHP i sprzedaży. Outsourcing pozwala zaoszczędzić czas i pieniądze – znajdź sprawdzonych partnerów biznesowych, którzy pomogą Ci rozwijać działalność i osiągać lepsze wyniki.",
     "tags": [
@@ -589,7 +589,7 @@
     ]
   },
   {
-    "category": "Sprzatanie",
+    "category": "Sprzątanie",
     "name": "Sprzątanie",
     "desc": "Czysto, świeżo i pachnąco – bez stresu i wysiłku. Profesjonalne ekipy sprzątające zajmą się domem, biurem lub obiektem po remoncie. Mycie okien, pranie dywanów, czyszczenie tapicerki – wszystko, byś mógł cieszyć się idealnym porządkiem każdego dnia.",
     "tags": [
@@ -668,7 +668,7 @@
     ]
   },
   {
-    "category": "ZlotaRaczka",
+    "category": "ZłotaRączka",
     "name": "Złota Rączka",
     "desc": "Nie ma rzeczy, której nie da się naprawić! Złote rączki pomogą Ci w drobnych i większych usterkach domowych – od napraw drzwi i okien po montaż sprzętu AGD. Szybko, solidnie i bez zbędnego gadania – po prostu naprawione tak, jak trzeba.",
     "tags": [
