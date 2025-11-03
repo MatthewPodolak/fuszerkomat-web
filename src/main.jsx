@@ -6,6 +6,7 @@ import PublicOnly from "@/layouts/guards/PublicOnly.jsx";
 import AuthOnly from "@/layouts/guards/PublicOnly.jsx";
 import UserOnly from "@/layouts/guards/UserOnly.jsx";
 import CompanyOnly from "@/layouts/guards/CompanyOnly.jsx";
+import UserAndAnonymusOnly from "@/layouts/guards/UserAndAnonymusOnly";
 import { hydrateTokenStore } from "@/api/tokenStore.js";
 import { ToastProvider } from "@/context/ToastContext.jsx";
 import GlobalErrorCatcher from "@/helpers/GlobalErrorCatcher.jsx";
@@ -17,6 +18,7 @@ hydrateTokenStore();
 
 const Error = lazy(() => import("./pages/error/Error"));
 const Home = lazy(() => import("./pages/Home"));
+const CompanyHome = lazy(() => import("./pages/CompanyHome"));
 const Category = lazy(() => import("./pages/Category"));
 
 const Register = lazy(() => import("./pages/auth/Register"));
@@ -31,7 +33,8 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     errorElement: <RootLayout><Error /></RootLayout>,
     children: [
-      { index: true, element: <Home /> },
+      { index: true, element: <UserAndAnonymusOnly><Home /></UserAndAnonymusOnly> },
+      { path: "/company", element: <CompanyOnly><CompanyHome /></CompanyOnly> },
       { path: "category/:category", element: <Category /> },
       { path: "register", element: <PublicOnly><Register /></PublicOnly> },
       { path: "login",    element: <PublicOnly><Login /></PublicOnly> },
