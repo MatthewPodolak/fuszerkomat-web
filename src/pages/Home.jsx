@@ -1,13 +1,17 @@
 import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 
+import Questionary from "@/components/Questionary";
 import categories from "../data/Categories.json";
 
 export default function Home() {
   const [query, setQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const wrapperRef = useRef(null);
-  const allTags = categories.flatMap((cat) => cat.tags.map((tag) => ({ ...tag, category: cat.name })));
+  const allTags = categories.flatMap((cat) => cat.tags.map((tag) => ({ ...tag, category: cat.name, cat: cat.category })));
+
+  const [isQuestOpen, setIsQuestOpen] = useState(false);
+  const [preQuest, setPreQuest] = useState(null);
 
   const search = (e) => {
     const value = e.target.value.toLowerCase();
@@ -23,7 +27,7 @@ export default function Home() {
       return nameHit || kwHit;
     }).slice(0, 8);
 
-    const matchedCategories = categories.filter((cat) => cat.name.toLowerCase().includes(value)).map((cat) => ({ name: cat.name }));
+    const matchedCategories = categories.filter((cat) => cat.name.toLowerCase().includes(value)).map((cat) => ({ name: cat.name, cat: cat.category }));
     let matched = [...matchedCategories, ...matchedTags].slice(0, 8);
 
     if(value && matched.length === 0){ matched = [{ name: "Inne" }]; }
@@ -31,7 +35,22 @@ export default function Home() {
     setSuggestions(matched);
   };
 
-    useEffect(() => {
+  const searchFor = (v) => {
+    setSuggestions([]);
+
+    let picked = { tag: null, cat: "Other" };
+    if(v){ 
+      picked.tag = v?.tagName ?? null;
+      picked.cat = v?.cat ?? null;
+    }
+
+    setPreQuest(picked);
+    setIsQuestOpen(true);
+  };
+
+  const closeQuest = () => { setIsQuestOpen(false); };
+
+  useEffect(() => {
       const handleClickOutside = (e) => {
         if (wrapperRef.current && !wrapperRef.current.contains(e.target)) {
           setSuggestions([]);
@@ -53,6 +72,7 @@ export default function Home() {
     }, []);
 
   return (
+    <>
     <div className="w-full min-h-screen bg-whitesmoke flex items-center justify-center">
       <div className="w-full max-w-7xl px-6">
 
@@ -69,14 +89,14 @@ export default function Home() {
           <div ref={wrapperRef} className="w-full max-w-2xl relative" >
             <div className="join w-full">
               <input onInput={search} value={query} name="q" type="text" placeholder="Czego potrzebujesz?" className="input h-12 input-bordered join-item w-full bg-whitesmoke" />
-              <button className="btn btn-primary join-item h-12">
+              <button onClick={() => searchFor()} className="btn btn-primary join-item h-12">
                 Szukaj
               </button>
             </div>
             {suggestions && suggestions.length > 0 && (
               <div className="absolute left-0 right-0 rounded-lg bg-whitesmoke shadow-lg z-10 text-left p-2 overflow-y-auto">
                 {suggestions.map((item, i) => (
-                  <div key={`${item.tagName || item.name}-${i}`} className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                  <div onClick={() => searchFor(item)} key={`${item.tagName || item.name}-${i}`} className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
                     <p className="text-md">{item.name}</p>
                     {item.category && (
                       <p className="text-sm text-gray-500">{item.category}</p>
@@ -108,5 +128,7 @@ export default function Home() {
         </section>
       </div>
     </div>
+    <Questionary open={isQuestOpen} onClose={closeQuest} pre={preQuest} />
+    </>
   );
 }
