@@ -1,5 +1,5 @@
-import { useMemo, useRef, useState } from "react";
-import { MapContainer, TileLayer, Marker, Popup, useMapEvent } from "react-leaflet";
+import { useMemo, useRef, useState, useEffect } from "react";
+import { MapContainer, TileLayer, Marker, Popup, useMapEvent, useMap, Circle } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 
@@ -27,8 +27,17 @@ function MapClickSetter({ onClickAt }) {
   useMapEvent("click", (e) => onClickAt([e.latlng.lat, e.latlng.lng], e));
   return null;
 }
+function RecenterOnPos({ pos, zoom }) {
+  const map = useMap();
+  useEffect(() => {
+    if (Array.isArray(pos) && Number.isFinite(pos[0]) && Number.isFinite(pos[1])) {
+      map.flyTo(pos, zoom, { duration: 0.6 });
+    }
+  }, [pos, zoom, map]);
+  return null;
+}
 
-export default function LocationPicker({ nameLat = "lat", nameLng = "lng", initial = { lat: 52.2297, lng: 21.0122 }, zoom = 13, onPick }) {
+export default function LocationPicker({ nameLat = "lat", nameLng = "lng", initial = { lat: 52.2297, lng: 21.0122 }, zoom = 13, onPick, rangeEnabled = false, range = 0 }) {
   const initialPos = useMemo(() => sanitize(initial?.lat, initial?.lng), [initial?.lat, initial?.lng]);
   const [markerPos, setMarkerPos] = useState(initialPos);
   const [address, setAddress] = useState("");
@@ -56,6 +65,14 @@ export default function LocationPicker({ nameLat = "lat", nameLng = "lng", initi
     };
   }, []);
 
+  useEffect(() => {
+    const [lat, lng] = initialPos;
+    if (Number.isFinite(lat) && Number.isFinite(lng)) {
+      setMarkerPos([lat, lng]);
+      fetchAddress(lat, lng);
+    }
+  }, [initialPos, fetchAddress]);
+
   const handleMapClick = (latlng) => {
     const [lat, lng] = sanitize(latlng[0], latlng[1]);
     setMarkerPos([lat, lng]);
@@ -64,7 +81,7 @@ export default function LocationPicker({ nameLat = "lat", nameLng = "lng", initi
   };
 
   return (
-    <div className="w-full max-w-5xl h-96">
+    <div className="w-full h-96">
       <input type="hidden" name={nameLat} value={markerPos[0]} readOnly />
       <input type="hidden" name={nameLng} value={markerPos[1]} readOnly />
 
@@ -74,6 +91,7 @@ export default function LocationPicker({ nameLat = "lat", nameLng = "lng", initi
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
+          <RecenterOnPos pos={markerPos} zoom={zoom} />
           <MapClickSetter onClickAt={handleMapClick} />
           <Marker position={markerPos}>
             <Popup>
@@ -82,6 +100,13 @@ export default function LocationPicker({ nameLat = "lat", nameLng = "lng", initi
               [{markerPos[0].toFixed(6)}, {markerPos[1].toFixed(6)}]
             </Popup>
           </Marker>
+          {rangeEnabled && range > 0 && (
+            <Circle
+              center={markerPos}
+              radius={range * 1000}
+              pathOptions={{ color: "#2563eb", fillColor: "#60a5fa", fillOpacity: 0.15, weight: 2 }}
+            />
+          )}
         </MapContainer>
 
         <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-bold text-slate-900 drop-shadow-[0_0_2px_#fff]">+</div>
