@@ -42,7 +42,7 @@ export default function CompanyHome() {
 
         const query = new URLSearchParams({
             Page: "1",
-            PageSize: "50",
+            PageSize: "1",
             ...(recivedData.keyWords ? { KeyWords: recivedData.keyWords } : {}),
             ...(recivedData.sort ? { SortOptions: recivedData.sort } : {}),
             ...(recivedData.category ? { CategoryType: recivedData.category } : {}),
@@ -68,7 +68,26 @@ export default function CompanyHome() {
         if(pageNumber === paginationState?.currentPage){ return; }
         setIsLoading(true);
 
-        const query = new URLSearchParams({ page: String(pageNumber), pageSize: "50", }); //TODO - ALONG WITH PARAMS IF ANY.
+        let query = new URLSearchParams({ page: String(pageNumber), pageSize: "50", });
+
+        if(JSON.stringify(lastParams) !== JSON.stringify(EMPTY_SEARCH_PARAMS))
+        {
+            query = new URLSearchParams({
+            Page: pageNumber,
+            PageSize: "1",
+            ...(lastParams.keyWords ? { KeyWords: lastParams.keyWords } : {}),
+            ...(lastParams.sort ? { SortOptions: lastParams.sort } : {}),
+            ...(lastParams.category ? { CategoryType: lastParams.category } : {}),
+            ...(lastParams.location?.lat && lastParams.location?.long
+                ? {
+                      "Location.Latitude": lastParams.location.lat,
+                      "Location.Longtitude": lastParams.location.long,
+                      "Location.Range": lastParams.location.radius ?? 10,
+                  }
+                : {}),
+            });
+        }
+
         const res = await getTasks(query);
 
         setIsLoading(false);
