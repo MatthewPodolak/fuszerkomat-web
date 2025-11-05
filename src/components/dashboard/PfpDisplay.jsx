@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Fachura from "../../assets/images/Fachura.png";
 import User from "../../assets/images/User.png";
 
@@ -13,11 +14,17 @@ export default function PfpDisplay({ size = "medium", source = null, type = "Use
   };
 
   const fallbackSrc = type === "User" ? User : Fachura;
+  const [imgSrc, setImgSrc] = useState(source || fallbackSrc);
+
+  const handleError = () => {
+    setImgSrc(fallbackSrc);
+  };
 
   return (
     <div className={`relative rounded-full overflow-hidden ${sizeClasses[size]}`}>
       <img
-        src={source || fallbackSrc}
+        src={imgSrc}
+        onError={handleError}
         alt={`${type} Profile`}
         className="w-full h-full object-cover rounded-full border-2 border-primary shadow-2xl"
       />

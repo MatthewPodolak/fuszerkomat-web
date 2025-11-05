@@ -29,7 +29,7 @@ export default function Navbar() {
   }, [isAuthed]);
 
   return (
-    <div className="navbar sticky top-0 z-50 bg-secondary text-secondary-content/95 shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
+    <div className="navbar sticky top-0 z-999 bg-secondary text-secondary-content/95 shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
       <Link className="navbar-start" to="/">
         <div className="navbar-start">
           <div className="px-2 gap-3 flex flex-row items-center cursor-pointer">
