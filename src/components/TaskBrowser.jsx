@@ -34,7 +34,7 @@ export default function TaskBrowser({onSearch}) {
     };
 
     return (
-        <div className="w-full bg-primary flex flex-col p-6">
+        <div className="w-full bg-primary flex flex-col p-6 shadow-2xl">
             <div className="w-full flex flex-row justify-between items-center">
                 <div className="w-full flex flex-row gap-3">
                     <label className="input bg-whitesmoke">
