@@ -1,5 +1,6 @@
 import TaskBrowser from "@/components/TaskBrowser";
 import Lottie from "lottie-react";
+import { useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { useToast } from "@/context/ToastContext";
 import { useMutation } from "@/api/hooks/useMutation";
@@ -26,6 +27,7 @@ const EMPTY_SEARCH_PARAMS = {
 
 export default function CompanyHome() {
     const { showToast } = useToast();
+    const navigate = useNavigate();
     const initialLoad = useRef(false);
     const lottieRef = useRef();
     const [isLoading, setIsLoading] = useState(false);
@@ -118,7 +120,9 @@ export default function CompanyHome() {
                             {loaded && loaded.length > 0 ? (
                                 <>
                                     {loaded.map((task) => (
-                                        <CompanyTaskPreview data={task} key={task.id} />
+                                        <div key={task.id} onClick={() => navigate(`/company/${task.id}`)}>
+                                            <CompanyTaskPreview data={task} />
+                                        </div>
                                     ))}
                                     <div className="w-full flex items-center justify-center mb-12">
                                         <Pagination pagination={paginationState} onPageChange={(nextPage) => fetchPage(nextPage)} showWhenSingle />
