@@ -1,11 +1,12 @@
 import PfpDisplay from "@/components/dashboard/pfpDisplay.jsx";
 import Categories from "@/data/Categories.json";
+import Status from "@/data/Status.json";
 
-export default function CompanyTaskPreview({data}){
+export default function TaskPreview({data, type="comp"}){
     const baseUrl = import.meta.env.VITE_API_ORIGIN;
-    const pfp = `${baseUrl}${data.workTaskRequestingUserData.pfp}`;
+    const pfp = `${baseUrl}${data.workTaskRequestingUserData?.pfp}`;
 
-    const location = data.location?.name ?? "Polska";
+    const location = data.location?.name?.trim() || "Polska";
 
     const category = Categories.find(a=>a.category === data.category);
     const allTags = Categories.flatMap((cat) => cat.tags.map((tag) => ({ ...tag })));
@@ -16,7 +17,12 @@ export default function CompanyTaskPreview({data}){
             <div className="w-full flex flex-col">
                 <div className="w-full flex flex-row justify-between items-center">
                     <p className="text-xl font-marker tracking-widest">{data.name}</p>
-                    <PfpDisplay type="User" source={pfp} size="medium" />
+                    {data.workTaskRequestingUserData && (
+                        <PfpDisplay type="User" source={pfp} size="medium" />
+                    )}
+                    {(type === "user" && data.status) &&(
+                        <div className="border py-1 px-3 rounded-full text-sm text-whitesmoke" style={{ backgroundColor: Status.find(a => a.val === data.status)?.color }}>{Status.find(a=>a.val === data.status).name}</div>
+                    )}
                 </div>
                 <p className="tracking-widest text-md ml-1">{data.desc}</p>
                 <div className="w-full flex flex-row items-center justify-between mt-3 mb-3">

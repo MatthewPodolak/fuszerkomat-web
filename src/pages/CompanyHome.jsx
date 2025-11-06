@@ -8,7 +8,7 @@ import { CompanyTaskService } from "@/api/services/CompanyTaskService";
 
 import ActivityIndicator from "@/components/ActivityIndicator";
 import Pagination from "@/components/Pagination";
-import CompanyTaskPreview from "@/components/CompanyTaskPreview";
+import TaskPreview from "@/components/TaskPreview";
 
 import EmptyLottie from "@/assets/lotties/empty.json";
 
@@ -121,7 +121,7 @@ export default function CompanyHome() {
                                 <>
                                     {loaded.map((task) => (
                                         <div key={task.id} onClick={() => navigate(`/company/${task.id}`)}>
-                                            <CompanyTaskPreview data={task} />
+                                            <TaskPreview data={task} />
                                         </div>
                                     ))}
                                     <div className="w-full flex items-center justify-center mb-12">
