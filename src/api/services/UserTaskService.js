@@ -16,4 +16,18 @@ export const UserTaskService = {
 
         return res;
     },
+
+    async getOwn(query, {ct, timeoutMs} = {}) {
+        const { method, url } = API.userWorkTasks.getOwn;
+
+        const res = await apiJson(`${url}?${query.toString()}`,
+        {
+            method: method,
+            credentials: "include",
+        },
+        { ct, timeoutMs });
+
+        return res;
+    },
+
 };

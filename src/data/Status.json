@@ -1,0 +1,22 @@
+[
+  {
+    "val": "Open",
+    "name": "Aktywne",
+    "color": "#10B981"
+  },
+  {
+    "val": "Closed",
+    "name": "Pełne",
+    "color": "#3B82F6"
+  },
+  {
+    "val": "Completed",
+    "name": "Ukończone",
+    "color": "#047857"
+  },
+  {
+    "val": "Canceled",
+    "name": "Anulowane",
+    "color": "#EF4444"
+  }
+]
