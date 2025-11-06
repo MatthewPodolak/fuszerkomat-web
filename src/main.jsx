@@ -27,6 +27,8 @@ const Login = lazy(() => import("./pages/auth/Login"));
 const UserDashboard = lazy(() => import("./pages/user/UserDashboard"));
 const CompanyDashboard = lazy(() => import("./pages/company/CompanyDashboard"));
 
+const TaskDisplayCompany = lazy(() => import("./pages/company/TaskDisplay"));
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -39,7 +41,8 @@ const router = createBrowserRouter([
       { path: "register", element: <PublicOnly><Register /></PublicOnly> },
       { path: "login",    element: <PublicOnly><Login /></PublicOnly> },
       { path: "/user/dashboard", element: <UserOnly><UserDashboard /></UserOnly>},
-      { path: "/company/dashboard", element: <CompanyOnly><CompanyDashboard /></CompanyOnly>}
+      { path: "/company/dashboard", element: <CompanyOnly><CompanyDashboard /></CompanyOnly>},
+      { path: "company/:id", element: <CompanyOnly><TaskDisplayCompany /></CompanyOnly> },
     ],
   },
 ]);
