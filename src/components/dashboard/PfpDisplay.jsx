@@ -9,6 +9,7 @@ export default function PfpDisplay({ size = "medium", source = null, type = "Use
   const sizeClasses = {
     small: "w-8 h-8",
     medium: "w-12 h-12",
+    ml: "w-16 h-16",
     large: "w-20 h-20",
     xl: "w-54 h-54",
   };
