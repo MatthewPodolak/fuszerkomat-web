@@ -1,0 +1,21 @@
+{
+  "name": "@local/chat-protos",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./index.cjs",
+  "module": "./index.mjs",
+  "types": "./chat_pb.d.ts",
+  "exports": {
+    ".": {
+      "types": "./chat_pb.d.ts",
+      "import": "./index.mjs",
+      "require": "./index.cjs",
+      "default": "./index.mjs"
+    }
+  },
+  "files": ["index.cjs", "index.mjs", "chat_pb.js", "chat_pb.d.ts"],
+  "sideEffects": false,
+  "dependencies": {
+    "google-protobuf": "^4.0.0"
+  }
+}

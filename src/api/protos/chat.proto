@@ -1,0 +1,58 @@
+syntax = "proto3";
+option csharp_namespace = "fuszerkomat_api.Grpc";
+package chat;
+
+service Chat {
+  rpc OpenOrGetConversation (OpenOrGetConversationRequest) returns (OpenOrGetConversationResponse);
+  rpc SendMessage (SendMessageRequest) returns (SendMessageResponse);
+  rpc ListMessages (ListMessagesRequest) returns (ListMessagesResponse);
+  rpc SubscribeMessages (SubscribeMessagesRequest) returns (stream Message);
+}
+
+message OpenOrGetConversationRequest {
+  int32 task_id = 1;
+  string owner_user_id = 2;
+  string company_user_id = 3;
+  string initial_message = 4;
+}
+
+message OpenOrGetConversationResponse {
+  string conversation_id = 1;
+  bool created = 2;
+}
+
+message SendMessageRequest {
+  string conversation_id = 1;
+  string sender_id = 2;
+  string text = 3;
+}
+
+message SendMessageResponse {
+  string message_id = 1;
+  string created_at = 2;
+}
+
+message ListMessagesRequest {
+  string conversation_id = 1;
+  int32 page = 2;
+  int32 page_size = 3;
+}
+
+message Message {
+  string message_id = 1;
+  string sender_id = 2;
+  string text = 3;
+  string created_at = 4;
+}
+
+message ListMessagesResponse {
+  repeated Message items = 1;
+  int32 page = 2;
+  int32 page_size = 3;
+  int32 total = 4;
+}
+
+message SubscribeMessagesRequest {
+  string conversation_id = 1;
+  string since = 2;
+}
