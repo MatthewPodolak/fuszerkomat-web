@@ -30,4 +30,18 @@ export const UserTaskService = {
         return res;
     },
 
+    async changeApplicationStatus(model, {ct, timeoutMs} = {}) {
+        const { method, url } = API.userWorkTasks.changeApplicationStatus;
+
+        const res = await apiJson(url,
+        {
+            method: method,
+            credentials: "include",
+            body: JSON.stringify(model),
+        },
+        { ct, timeoutMs }
+        );
+
+        return res;
+    }
 };

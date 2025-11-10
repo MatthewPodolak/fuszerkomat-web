@@ -10,6 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@local/chat-protos": "file:packages/chat-protos",
+    "google-protobuf": "4.0.0",
+    "grpc-web": "^2.0.2",
     "leaflet": "^1.9.4",
     "lottie-react": "^2.4.1",
     "react": "^19.1.1",
@@ -28,6 +31,7 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.22",
     "globals": "^16.4.0",
+    "protoc-gen-js": "^3.21.4-4",
     "tailwindcss": "^4.0.0",
     "vite": "^7.1.7"
   }

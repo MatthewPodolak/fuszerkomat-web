@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import RootLayout from "./layouts/RootLayout";
 import PublicOnly from "@/layouts/guards/PublicOnly.jsx";
-import AuthOnly from "@/layouts/guards/PublicOnly.jsx";
+import AuthOnly from "@/layouts/guards/AuthOnly.jsx";
 import UserOnly from "@/layouts/guards/UserOnly.jsx";
 import CompanyOnly from "@/layouts/guards/CompanyOnly.jsx";
 import UserAndAnonymusOnly from "@/layouts/guards/UserAndAnonymusOnly";
@@ -29,6 +29,8 @@ const CompanyDashboard = lazy(() => import("./pages/company/CompanyDashboard"));
 
 const TaskDisplayCompany = lazy(() => import("./pages/company/TaskDisplay"));
 
+const ChatPanel = lazy(() => import("./pages/chat/ChatPanel"));
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -43,6 +45,7 @@ const router = createBrowserRouter([
       { path: "/user/dashboard", element: <UserOnly><UserDashboard /></UserOnly>},
       { path: "/company/dashboard", element: <CompanyOnly><CompanyDashboard /></CompanyOnly>},
       { path: "company/:id", element: <CompanyOnly><TaskDisplayCompany /></CompanyOnly> },
+      { path: "/chat/:id?", element: <AuthOnly><ChatPanel /></AuthOnly>}
     ],
   },
 ]);

@@ -1,0 +1,14 @@
+[
+  {
+    "val": "Applied",
+    "companyHint": "Użytkownik jeszcze wybiera! To jest twoja szansa..."
+  },
+  {
+    "val": "Rejected",
+    "companyHint": "Niestety, tym razem padło na kogoś innego."
+  },
+  {
+    "val": "Accepted",
+    "companyHint": "WOW! Twoja oferta rzeczywiśćie była najlepsza! Powodzenia."
+  }
+]
