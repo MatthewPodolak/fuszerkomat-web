@@ -91,7 +91,7 @@ export default function TaskBrowser({onSearch}) {
                              <LocationPicker
                                 zoom={10}
                                 initial={{ lat: browseQuery?.location?.lat, lng: browseQuery?.location?.long }}
-                                onPick={(lat, lng) => setBrowseQuery(prev => ({ ...prev, location: { ...prev.location, lat, long: lng } }))}
+                                onPick={(lat, lng, x) => setBrowseQuery(prev => ({ ...prev, location: { ...prev.location, lat, long: lng } }))}
                                 rangeEnabled={true}
                                 range={browseQuery.location.radius}
                             />

@@ -136,7 +136,7 @@ export default function TaskDisplay() {
                     {taskData?.applicants?.length > 0 ? (
                         <>
                             {taskData.applicants.map((apk) => (
-                                <PfpDisplay size="medium" type="Company" source={`${baseUrl}${apk.pfp}`}/>
+                                <div onClick={() => navigate(`/company/${apk.id}`)} className="cursor-pointer"><PfpDisplay size="medium" type="Company" source={`${baseUrl}${apk.pfp}`}/></div>
                             ))}
                         </>
                     ):(

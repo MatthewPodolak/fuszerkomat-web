@@ -37,6 +37,13 @@ function RecenterOnPos({ pos, zoom }) {
   return null;
 }
 
+function toParts(addr = {}) {
+  const city = addr.city || addr.town || addr.village || addr.hamlet || addr.suburb || "";
+  const street = [addr.road, addr.house_number].filter(Boolean).join(" ");
+  const postalCode = addr.postcode || "";
+  return { street, city, postalCode };
+}
+
 export default function LocationPicker({ nameLat = "lat", nameLng = "lng", initial = { lat: 52.2297, lng: 21.0122 }, zoom = 13, onPick, rangeEnabled = false, range = 0 }) {
   const initialPos = useMemo(() => sanitize(initial?.lat, initial?.lng), [initial?.lat, initial?.lng]);
   const [markerPos, setMarkerPos] = useState(initialPos);
@@ -46,7 +53,7 @@ export default function LocationPicker({ nameLat = "lat", nameLng = "lng", initi
 
   const fetchAddress = useMemo(() => {
     return async (lat, lon) => {
-      if (!Number.isFinite(lat) || !Number.isFinite(lon)) return;
+      if (!Number.isFinite(lat) || !Number.isFinite(lon)) return null;
       abortRef.current?.abort();
       const ctrl = new AbortController();
       abortRef.current = ctrl;
@@ -59,8 +66,10 @@ export default function LocationPicker({ nameLat = "lat", nameLng = "lng", initi
         const d = await r.json();
         setAddress(d?.display_name || "");
         setStatus("ok");
+        return d;
       } catch (e) {
         if (e.name !== "AbortError") setStatus("error");
+        return null;
       }
     };
   }, []);
@@ -73,11 +82,12 @@ export default function LocationPicker({ nameLat = "lat", nameLng = "lng", initi
     }
   }, [initialPos, fetchAddress]);
 
-  const handleMapClick = (latlng) => {
+  const handleMapClick = async (latlng) => {
     const [lat, lng] = sanitize(latlng[0], latlng[1]);
     setMarkerPos([lat, lng]);
-    fetchAddress(lat, lng);
-    onPick?.(lat, lng);
+    const data = await fetchAddress(lat, lng);
+    const details = data?.address ? toParts(data.address) : { street: "", city: "", postalCode: "" };
+    onPick?.(lat, lng, details);
   };
 
   return (

@@ -57,4 +57,18 @@ export const ProfileService = {
 
     return storedPfp;
   },
+
+  async getCompanyProfile(companyId, {ct, timeoutMs}) {
+    const { method, url } = API.account.getCompanyProfile;
+
+    let query = new URLSearchParams({ id: String(companyId) });
+    const res = await apiJson(`${url}?${query.toString()}`,
+    {
+        method: method,
+        credentials: "include",
+    },
+    { ct, timeoutMs });
+
+    return res;
+  }
 };

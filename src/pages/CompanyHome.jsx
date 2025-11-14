@@ -120,7 +120,7 @@ export default function CompanyHome() {
                             {loaded && loaded.length > 0 ? (
                                 <>
                                     {loaded.map((task) => (
-                                        <div key={task.id} onClick={() => navigate(`/company/${task.id}`)}>
+                                        <div key={task.id} onClick={() => navigate(`/company/tasks/${task.id}`)}>
                                             <TaskPreview data={task} />
                                         </div>
                                     ))}
