@@ -38,6 +38,9 @@ export default function ChatPanel(){
     const {mutate: changeApplicationStatus } = useMutation(
         (vars, ctx) => UserTaskService.changeApplicationStatus(vars, ctx)
     );
+    const { mutate: markAsCompleted } = useMutation(
+        (vars, ctx) => UserTaskService.markAsCompleted(vars, ctx)
+    );
 
     const changeStatus = async (newStatus) => {
         if(!newStatus){ return; }
@@ -57,6 +60,15 @@ export default function ChatPanel(){
                 break;
         }
     };
+
+    const markTaskAsCompleted = async () => {
+        let model = { workTaskId: selectedConvoData.taskData.id, companyId: selectedConvoData.corespondentId };
+        const res = await markAsCompleted(model);
+        if(res.status !== 200 || res.aborted){ showToast(null, "error"); return; }
+
+        showToast("pomyślnie zmieniono status.", "success");
+        setSelectedConvoData(prev => ({...prev, taskData: { ...prev.taskData, status: "Completed" }}));
+    }
 
     const send = async () => {
         const text = (input || "").trim();
@@ -281,21 +293,36 @@ export default function ChatPanel(){
                                                     <button onClick={() => changeStatus("Accept")} className="btn btn-success px-12">zaakceptuj</button>
                                                 </>
                                             )}
+                                            {(!selectedConvoData.taskData.applicationStatus && selectedConvoData.taskData.status === "Closed" && !selectedConvoData.isArchived) && (
+                                                <>
+                                                    <button onClick={() => markTaskAsCompleted()} className="btn btn-success px-12 tracking-wide">oznacz jako wykonane</button>
+                                                </>
+                                            )}
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="#DDA853" className="size-7 cursor-pointer">
                                                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z" />
                                             </svg>
                                         </div>
                                     </div>
                                     <div className="w-full h-214 overflow-y-scroll overflow-x-hidden flex flex-col bg-whitesmoke mb-2">
-                                        {selectedConvoData.taskData?.applicationStatus && (
+                                        {(selectedConvoData.taskData?.applicationStatus && selectedConvoData.taskData?.status !== "Completed") && (
                                             <div className={`w-full py-2 flex items-center justify-center ${selectedConvoData.taskData.applicationStatus.status === 'Accepted' ? 'bg-green-300' : selectedConvoData.taskData.applicationStatus.status === 'Rejected' ? 'bg-red-300' : 'bg-accent' }`}>
                                                 <p className="tracking-wide text-sm">{ApplicationStatus.find(a => a.val === selectedConvoData.taskData.applicationStatus.status).companyHint}</p>
+                                            </div>
+                                        )}
+                                        {(selectedConvoData.taskData?.applicationStatus?.status === "Accepted" && selectedConvoData.taskData.status === "Completed") && (
+                                            <div className={`w-full py-2 flex items-center justify-center bg-green-300`}>
+                                                <p className="tracking-wide text-sm">Wykonane? Popros uzytkownika o opinie :)</p>
+                                            </div>
+                                        )}
+                                        {(!selectedConvoData.taskData.applicationStatus && selectedConvoData.taskData.status === "Completed" && !selectedConvoData.isArchived) && (
+                                            <div className={`w-full py-2 flex items-center justify-center bg-green-300`}>
+                                                <p className="tracking-wide text-sm">Zlecenie wykonane! Wystaw opinie firmie!</p>
                                             </div>
                                         )}
                                         <div className="w-full p-6">
                                             <div className="w-full min-h-24 bg-base-100 rounded-xl gap-3 p-3 flex flex-col items-center justify-center">
                                                 <p className="font-marker tracking-widest">{selectedConvoData.taskData.name}</p>
-                                                <p className="text-sm">{selectedConvoData.taskData.desc}</p>
+                                                <p className="text-sm text-center">{selectedConvoData.taskData.desc}</p>
                                             </div>
                                         </div>
                                         {messages.map((msg, i) => {

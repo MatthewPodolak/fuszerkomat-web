@@ -43,5 +43,20 @@ export const UserTaskService = {
         );
 
         return res;
-    }
+    },
+
+    async markAsCompleted(model, {ct, timeoutMs} = {}){
+        const { method, url } = API.userWorkTasks.completeRealization;
+
+        const res = await apiJson(url,
+        {
+            method: method,
+            credentials: "include",
+            body: JSON.stringify(model),
+        },
+        { ct, timeoutMs }
+        );
+
+        return res;
+    },
 };
