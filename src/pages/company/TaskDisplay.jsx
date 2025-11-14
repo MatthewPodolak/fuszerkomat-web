@@ -69,7 +69,7 @@ export default function TaskDisplay() {
         <div className="w-full min-h-256 relative flex items-center justify-center bg-gray-100 py-12">
             <div className="min-w-5xl min-h-256 relative mb-24">
 
-                <div className="min-w-5xl bg-whitesmoke border border-gray-300 rounded-2xl shadow-2xl flex flex-col p-12 absolute z-10 gap-3">
+                <div className="max-w-5xl bg-whitesmoke border border-gray-300 rounded-2xl shadow-2xl flex flex-col p-12 sticky z-10 gap-3">
                     {isLoading ? (
                         <div className="w-full flex items-center justify-center"><ActivityIndicator size="medium"/></div>
                     ):(
@@ -80,8 +80,8 @@ export default function TaskDisplay() {
                                     <div key={tag.name} className="rounded-full px-3 py-1 text-sm border">{tag.name}</div>
                                 ))}
                             </div>
-                            <p className="text-3xl tracking-widest text-center font-marker mb-6">{taskData.name}</p>
-                            <p className="text-xl tracking-wide justify-center flex mb-24 mt-6">{taskData.desc}</p>
+                            <p className="text-3xl tracking-widest text-center font-marker mb-3">{taskData.name}</p>
+                            <p className="text-lg tracking-wide justify-center flex mb-6 text-center">{taskData.desc}</p>
                             <div className="w-full flex flex-row gap-3 items-center justify-center">
                                 {taskData.images?.map((img) => (
                                     <ImageDisplay key={img} source={`${baseUrl}${img}`}/>
@@ -131,6 +131,17 @@ export default function TaskDisplay() {
                         </>
                     )}
                 </div>
+                <div className="w-full min-h-24 mt-6">
+                    {taskData && (
+                        <div className="w-1/2 h-24 bg-whitesmoke shadow-2xl rounded-3xl float-end px-6 flex items-center">
+                            {!taskData.aplicated ? (
+                                <button onClick={() => setMsgPopActive(true)} className="btn btn-success font-marker tracking-widest w-full h-[60%] rounded-xl">APLIKUJ</button>
+                            ):(
+                                <button className="btn btn-accent font-marker tracking-widest w-full h-[60%] rounded-xl">Idz do konwersacji</button>
+                            )}
+                        </div>    
+                    )}
+                </div>
 
                 <div className="absolute flex flex-col items-center p-3 gap-3 w-24 min-h-82 border border-gray-300 bg-whitesmoke -left-22 top-5 rounded-2xl z-0 shadow-2xl">
                     {taskData?.applicants?.length > 0 ? (
@@ -143,16 +154,6 @@ export default function TaskDisplay() {
                         <></>
                     )}
                 </div>
-                
-                {taskData && (
-                    <div className="absolute items-center justify-center flex w-1/2 h-24 border border-gray-300 bg-whitesmoke bottom-0 right-5 rounded-2xl z-0 shadow-2xl">
-                        {!taskData.aplicated ? (
-                            <button onClick={() => setMsgPopActive(true)} className="btn btn-success font-marker tracking-widest w-[90%] h-[60%] rounded-xl">APLIKUJ</button>
-                        ):(
-                            <button className="btn btn-accent font-marker tracking-widest w-[90%] h-[60%] rounded-xl">Idz do konwersacji</button>
-                        )}
-                    </div>
-                )}
 
                 {msgPopActive && (
                     <MsgPop onSend={applyToTask} onClose={() => setMsgPopActive(false)} />
