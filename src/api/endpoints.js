@@ -20,6 +20,7 @@ export const API = {
   companyWorkTask: {
     getAll: { method: "GET", url: "/api/CompanyWorkTask/get-all" },
     getById: { method: "GET", url: "/api/CompanyWorkTask/get-by-id" },
+    getApplied: { method: "GET", url: "/api/CompanyWorkTask/get-applied" },
     apply: { method: "POST", url: "/api/CompanyWorkTask/apply" },
   },
 

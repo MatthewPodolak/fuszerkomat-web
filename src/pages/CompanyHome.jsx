@@ -39,7 +39,7 @@ export default function CompanyHome() {
     );
 
     const search = async (recivedData) => {
-        if(JSON.stringify(recivedData) === JSON.stringify(lastParams)){ console.log("SAME"); return; }
+        if(JSON.stringify(recivedData) === JSON.stringify(lastParams)){ return; }
         setIsLoading(true);
 
         const query = new URLSearchParams({

@@ -38,7 +38,6 @@ export default function ProfileInfoPanel({own = false, id = null}){
 
         let data = (!id) ? res.data.companyProfileDataVMO : res.data;
         let pfp = `${baseUrl}${data.img}`
-        console.log("OWN GOT -> " + JSON.stringify(data));
         setCompanyData(data);
         setPfp(pfp);
     };
