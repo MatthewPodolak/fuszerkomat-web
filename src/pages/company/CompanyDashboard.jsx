@@ -5,13 +5,11 @@ import ActivityIndicator from "@/components/ActivityIndicator.jsx";
 
 const InfoPanel = lazy(() => import("@/components/dashboard/company/ProfileInfoPanel"));
 const AppliedPanel = lazy(() => import("@/components/dashboard/company/AppliedPanel"));
-const OpinionPanel = lazy(() => import("@/components/dashboard/company/OpinionPanel"));
 const SettingsPanel = lazy(() => import("@/components/dashboard/company/SettingsPanel"));
 
 const TABS = [
   { key: "info", label: "Profil" },
   { key: "applied", label: "Aplikacje" },
-  { key: "opinions", label: "Opinie" },
   { key: "settings", label: "Ustawienia konta" },
 ];
 
@@ -23,11 +21,9 @@ export default function UserDashboard() {
   const content = useMemo(() => {
     switch (selected) {
       case "info":
-        return <InfoPanel />;
+        return <InfoPanel own={true} />;
       case "applied":
         return <AppliedPanel />;
-      case "opinions":
-        return <OpinionPanel />;
       case "settings":
         return <SettingsPanel />;
       default:

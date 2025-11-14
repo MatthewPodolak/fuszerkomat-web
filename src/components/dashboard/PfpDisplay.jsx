@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Fachura from "../../assets/images/Fachura.png";
 import User from "../../assets/images/User.png";
 
@@ -20,6 +20,10 @@ export default function PfpDisplay({ size = "medium", source = null, type = "Use
   const handleError = () => {
     setImgSrc(fallbackSrc);
   };
+
+  useEffect(() => {
+    setImgSrc(source || fallbackSrc);
+  }, [source, fallbackSrc]);
 
   return (
     <div className={`relative rounded-full overflow-hidden ${sizeClasses[size]}`}>

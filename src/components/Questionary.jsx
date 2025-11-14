@@ -185,7 +185,7 @@ export default function Questionary({ open = false, onClose, pre = null }) {
                     <div className="w-full flex gap-3 h-96 border rounded-xl border-gray-400 items-stretch">
                         <LocationPicker
                             initial={{ lat: questData?.location?.lat, lng: questData?.location?.long }}
-                            onPick={(lat, lng) => setQuestData(prev => ({ ...prev, location: { ...prev.location, lat, long: lng } }))}
+                            onPick={(lat, lng, x) => setQuestData(prev => ({ ...prev, location: { ...prev.location, lat, long: lng } }))}
                         />
                     </div>
                     <div className="w-full flex justify-end mb-6 gap-3">

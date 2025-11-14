@@ -28,6 +28,7 @@ const UserDashboard = lazy(() => import("./pages/user/UserDashboard"));
 const CompanyDashboard = lazy(() => import("./pages/company/CompanyDashboard"));
 
 const TaskDisplayCompany = lazy(() => import("./pages/company/TaskDisplay"));
+const CompanyDisplay = lazy(() => import("./pages/company/CompanyDisplay"));
 
 const ChatPanel = lazy(() => import("./pages/chat/ChatPanel"));
 
@@ -44,7 +45,8 @@ const router = createBrowserRouter([
       { path: "login",    element: <PublicOnly><Login /></PublicOnly> },
       { path: "/user/dashboard", element: <UserOnly><UserDashboard /></UserOnly>},
       { path: "/company/dashboard", element: <CompanyOnly><CompanyDashboard /></CompanyOnly>},
-      { path: "company/:id", element: <CompanyOnly><TaskDisplayCompany /></CompanyOnly> },
+      { path: "/company/tasks/:id", element: <CompanyOnly><TaskDisplayCompany /></CompanyOnly> },
+      { path: "/company/:id", element: <AuthOnly><CompanyDisplay /></AuthOnly> },
       { path: "/chat/:id?", element: <AuthOnly><ChatPanel /></AuthOnly>}
     ],
   },
