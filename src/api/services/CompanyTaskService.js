@@ -15,6 +15,19 @@ export const CompanyTaskService = {
         return res;
     },
 
+    async getAppliedTasks(query, {ct, timeoutMs} = {}){
+        const { method, url } = API.companyWorkTask.getApplied;
+
+        const res = await apiJson(`${url}?${query.toString()}`,
+        {
+            method: method,
+            credentials: "include",
+        },
+        { ct, timeoutMs });
+
+        return res;
+    },
+
     async getById(id, {ct, timeoutMs} = {}){
         const { method, url } = API.companyWorkTask.getById;
 
