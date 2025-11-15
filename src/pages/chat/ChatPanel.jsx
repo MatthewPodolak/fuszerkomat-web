@@ -260,7 +260,7 @@ export default function ChatPanel(){
                             </div>
                             <div>
                                 {!convosDataLoading && convosData.length > 0 ? (                                
-                                    <div className="w-full h-256 flex flex-col overflow-scroll">
+                                    <div className="w-full h-[960px] flex flex-col overflow-scroll">
                                         {convosData.map((conv) => (
                                             <ChatPreview data={conv} key={conv.conversationId} onSelect={selectChat} archive={conv.isArchived} selected={selectedConvo === conv.conversationId ? true : false} />
                                         ))}
