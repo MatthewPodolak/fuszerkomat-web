@@ -4,7 +4,10 @@ import { useAuth } from "@/api/hooks/useAuth";
 import { useEffect, useState } from "react";
 import { ProfileService } from "@/api/services/ProfileService";
 
+import PfpDisplay from "@/components/dashboard/PfpDisplay";
 import Questionary from "@/components/Questionary";
+import Fachura from "@/assets/images/Fachura.png";
+import User from "@/assets/images/User.png";
 
 export default function Navbar() {
   const { isAuthed, claim } = useAuth();
@@ -23,9 +26,10 @@ export default function Navbar() {
     (async () => {
       if(isAuthed){
         const picture = await ProfileService.getProfilePicture();
-        if(picture){ setPfp(picture); return; }
+        if(picture){ console.log("Not using base --> " + picture); setPfp(picture); return; }
 
-        const base = (claim === "User") ? "/base/user" : "/base/comp";
+        console.log("USING BASE!");
+        const base = (claim === "User") ? User : Fachura;
         setPfp(base);
       }
     })();
@@ -63,12 +67,8 @@ export default function Navbar() {
                   </svg>
                 </div>
 
-                <div onClick={() => navigateToDashboard()} className="dropdown dropdown-end">
-                  <div className="avatar placeholder btn btn-ghost btn-circle border border-accent/60">
-                    <div className="bg-accent text-accent-content w-10 rounded-full font-bold">
-                      <img src={pfp} alt="Profile" />
-                    </div>
-                  </div>
+                <div onClick={() => navigateToDashboard()} className="dropdown dropdown-end cursor-pointer">
+                    <PfpDisplay overlay={true} source={pfp} type={claim}/>
                 </div>
 
               </div>
