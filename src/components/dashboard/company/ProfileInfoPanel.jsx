@@ -8,6 +8,7 @@ import PfpDisplay from "@/components/dashboard/PfpDisplay";
 import ProfileInfoPanelEdit from "./ProfileInfoPanelEdit";
 import ImageDisplay from "@/components/ImageDisplay";
 import MapPin from "@/components/MapPin";
+import OpinionDisplay from "@/components/OpinionDisplay";
 
 const baseUrl = import.meta.env.VITE_API_ORIGIN;
 
@@ -130,9 +131,11 @@ export default function ProfileInfoPanel({own = false, id = null}){
                 return (
                     <div className="w-full min-h-36 mt-3 flex flex-col items-center justify-center">
                         {companyData.opinions && companyData.opinions.length > 0 ? (
-                            <>
-
-                            </>
+                            <div className="flex flex-col w-full gap-3 mt-3">
+                                {companyData.opinions.map((op) => (
+                                    <OpinionDisplay key={op.createdAt} data={op}/>
+                                ))}
+                            </div>
                         ):(
                             <>
                                 <p className="font-marker tracking-widest text-[92px] rotate-90"> :i</p> 
