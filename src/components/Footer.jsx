@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Footer() {
   return (
     <div className="w-full h-48 bg-accent relative overflow-hidden">
@@ -5,8 +7,8 @@ export default function Footer() {
         <p className="text-base-content/70">
           © {new Date().getFullYear()} FUSZERKOMAT. All rights reserved.
         </p>
-        <a href="#" className="btn btn-sm btn-ghost">Login</a>
-        <a href="#" className="btn btn-sm btn-outline">Register</a>
+        <Link to="/login" className="btn btn-sm btn-ghost">Zaloguj się</Link>
+        <Link to="/register" className="btn btn-sm btn-outline">Załóż konto</Link>
       </div>
 
       <div className="absolute right-6 top-6 z-10 flex gap-2">
