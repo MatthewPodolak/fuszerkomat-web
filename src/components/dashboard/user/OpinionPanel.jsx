@@ -65,8 +65,8 @@ export default function OpinionPanel(){
 
     return (
         <div className="w-full h-auto flex flex-col">
-            <div className="w-full flex flex-row items-center py-3 px-3 justify-center bg-primary">
-                <div className="w-full flex flex-row gap-3">
+            <div className="w-full flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 py-3 px-3 bg-primary">
+                <div className="w-full flex flex-wrap gap-2 sm:gap-3">
                     {OPINION_TYPES.map((type) => {
                         const isSelected = selectedTypes.includes(type.val);
                         return (

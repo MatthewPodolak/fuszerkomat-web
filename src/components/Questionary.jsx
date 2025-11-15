@@ -108,7 +108,7 @@ export default function Questionary({ open = false, onClose, pre = null }) {
     switch(progress){
         case 0:
             return (
-                <div className="px-6 flex flex-col items-center justify-center gap-6">
+                <div className="px-3 xl:px-6 flex flex-col items-center justify-center gap-6">
                     <p className="text-lg tracking-wide font-semibold text-center">Opisz dokładniej czego potrzebujesz, wykonawcą będzie łatwiej : )</p>
                     <div className="w-full relative mt-2">
                         <p className="absolute -top-2 left-3 bg-base-100 text-sm px-1 text-gray-500 z-10">Nazwa</p>
@@ -119,15 +119,15 @@ export default function Questionary({ open = false, onClose, pre = null }) {
                         <textarea onChange={(e) => {setQuestData(prev => ({ ...prev, desc: e.target.value })); }} value={questData.desc ?? ""} type="text" className="textarea textarea-bordered w-full min-h-36 resize-none" />
                     </div>
                     <div className="w-full flex justify-end mb-6">
-                        <button onClick={() => setProgress(progress+1)} className="btn btn-accent w-36">Dalej</button>
+                        <button onClick={() => setProgress(progress+1)} className="btn btn-accent w-full xl:w-36">Dalej</button>
                     </div>
                 </div>
             );
         case 1:
             return (
-                <div className="px-6 flex flex-col items-center justify-center gap-6">
+                <div className="px-3 xl:px-6 flex flex-col items-center justify-center gap-6">
                     <p className="text-lg tracking-wide font-semibold text-center">Masz jakieś zdjęcia?</p>
-                    <p className="text-md -mt-3">Wykonawcy je uwielbiają - łatwiej im oszacować fuszkę. Jak je dodasz - będziesz mieć o wiele więcej zgłoszeń.</p>
+                    <p className="text-md -mt-3 text-center">Wykonawcy je uwielbiają - łatwiej im oszacować fuszkę. Jak je dodasz - będziesz mieć o wiele więcej zgłoszeń.</p>
                     <div className="w-full flex flex-row gap-3">
                         <div onClick={() => fileInputRef.current?.click()} className="border border-gray-400 rounded-xl w-30 h-30 flex items-center justify-center cursor-pointer">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={0.6} stroke="currentColor" className="size-12">
@@ -151,15 +151,15 @@ export default function Questionary({ open = false, onClose, pre = null }) {
                     {fileError && (
                         <p className="text-red-500">{fileError}</p>
                     )}
-                    <div className="w-full flex justify-end mb-6 gap-3">
-                        <button onClick={() => setProgress(progress-1)} className="btn btn-soft w-36">Cofnij</button>
-                        <button onClick={() => setProgress(progress+1)} className="btn btn-accent w-36">Dalej</button>
+                    <div className="w-full flex flex-col lg:flex-row justify-end mb-6 gap-3">
+                        <button onClick={() => setProgress(progress-1)} className="btn btn-soft w-full xl:w-36">Cofnij</button>
+                        <button onClick={() => setProgress(progress+1)} className="btn btn-accent w-full xl:w-36">Dalej</button>
                     </div>
                 </div>
             );
         case 2:
             return (
-                <div className="px-6 flex flex-col items-center justify-center gap-6">
+                <div className="px-3 xl:px-6 flex flex-col items-center justify-center gap-6">
                     <p className="text-lg tracking-wide font-semibold text-center">Pogadajmy o terminie wykonania...</p>
                     <p className="text-md -mt-3">Jak szybko trzeba się z tym uwinąć?</p>
                     <div className="w-full flex flex-col gap-3">
@@ -168,19 +168,19 @@ export default function Questionary({ open = false, onClose, pre = null }) {
                         <div onClick={() => setQuestData((prev) => ({ ...prev, expRelTime: "TwoWeeks" }))} className={`btn w-full ${questData.expRelTime === "TwoWeeks" ? "btn-accent" : "btn-outline btn-accent"}`}>W ciągu dwóch tygodni</div>
                         <div onClick={() => setQuestData((prev) => ({ ...prev, expRelTime: "Adaptive" }))} className={`btn w-full ${questData.expRelTime === "Adaptive" ? "btn-accent" : "btn-outline btn-accent"}`}>Niech będzie. Dostusuję się.</div>
                     </div>
-                    <div className="w-full flex justify-end mb-6 gap-3">
-                        <button onClick={() => setProgress(progress-1)} className="btn btn-soft w-36">Cofnij</button>
+                    <div className="w-full flex flex-col lg:flex-row justify-end mb-6 gap-3">
+                        <button onClick={() => setProgress(progress-1)} className="btn btn-soft w-full xl:w-36">Cofnij</button>
                         {questData.expRelTime ? (
-                            <button onClick={() => setProgress(progress+1)} className="btn btn-accent w-36">Dalej</button>
+                            <button onClick={() => setProgress(progress+1)} className="btn btn-accent w-full xl:w-36">Dalej</button>
                         ):(
-                            <button className="btn btn-soft w-36">Dalej</button>
+                            <button className="btn btn-soft w-full xl:w-36">Dalej</button>
                         )}
                     </div>
                 </div>
             );
         case 3:
             return (
-                <div className="px-6 flex flex-col items-center justify-center gap-6">
+                <div className="px-3 xl:px-6 flex flex-col items-center justify-center gap-6">
                     <p className="text-lg tracking-wide font-semibold text-center">Gdzie jest to bojowe zadanie?</p>
                     <div className="w-full flex gap-3 h-96 border rounded-xl border-gray-400 items-stretch">
                         <LocationPicker
@@ -188,15 +188,15 @@ export default function Questionary({ open = false, onClose, pre = null }) {
                             onPick={(lat, lng, x) => setQuestData(prev => ({ ...prev, location: { ...prev.location, lat, long: lng } }))}
                         />
                     </div>
-                    <div className="w-full flex justify-end mb-6 gap-3">
-                        <button onClick={() => setProgress(progress-1)} className="btn btn-soft w-36">Cofnij</button>
-                        <button onClick={() => setProgress(progress+1)} className="btn btn-accent w-36">Dalej</button>
+                    <div className="w-full flex flex-col xl:flex-row justify-end mb-6 gap-3">
+                        <button onClick={() => setProgress(progress-1)} className="btn btn-soft w-full xl:w-36">Cofnij</button>
+                        <button onClick={() => setProgress(progress+1)} className="btn btn-accent w-full xl:w-36">Dalej</button>
                     </div>
                 </div>
             );
         case 4:
             return (
-                <div className="px-6 flex flex-col items-center justify-center gap-6">
+                <div className="px-3 xl:px-6 flex flex-col items-center justify-center gap-6">
                     <p className="text-lg tracking-wide font-semibold text-center">Co najlepiej opisuje twoje ogloszenie?</p>
                     <div className="w-full flex flex-wrap items-center justify-center gap-3">
                         {categories.map((category) => (
@@ -215,19 +215,19 @@ export default function Questionary({ open = false, onClose, pre = null }) {
                             </div>
                         ))}
                     </div>
-                    <div className="w-full flex justify-end mb-6 gap-3">
-                        <button onClick={() => setProgress(progress-1)} className="btn btn-soft w-36">Cofnij</button>
+                    <div className="w-full flex flex-col xl:flex-row justify-end mb-6 gap-3">
+                        <button onClick={() => setProgress(progress-1)} className="btn btn-soft w-full xl:w-36">Cofnij</button>
                         {questData.category ? (
-                            <button onClick={() => setProgress(progress+1)} className="btn btn-accent w-36">Dalej</button>
+                            <button onClick={() => setProgress(progress+1)} className="btn btn-accent w-full xl:w-36">Dalej</button>
                         ):(
-                            <button className="btn btn-soft w-36">Dalej</button>
+                            <button className="btn btn-soft w-full xl:w-36">Dalej</button>
                         )}
                     </div>
                 </div>
             );
         case 5:
             return (
-                <div className="px-6 flex flex-col items-center justify-center gap-6">
+                <div className="px-3 xl:px-6 flex flex-col items-center justify-center gap-6">
                     <p className="text-lg tracking-wide font-semibold text-center">Masz jakiś ustalony budżet?</p>
                     <p className="text-md -mt-3">Czasem lepiej go nie podawać...</p>
                     <div className="w-full flex flex-col gap-3">
@@ -240,18 +240,18 @@ export default function Questionary({ open = false, onClose, pre = null }) {
                             <input onChange={(e) => {setQuestData(prev => ({ ...prev, maxPrice: e.target.value })); }} type="number" className="input validator w-full" min="1" max="100000" />
                         </div>
                     </div>
-                    <div className="w-full flex justify-end mb-6 gap-3">
-                        <button onClick={() => setProgress(progress-1)} className="btn btn-soft w-36">Cofnij</button>
-                        <button onClick={() => setProgress(progress+1)} className="btn btn-accent w-52">Stworz ogloszenie</button>
+                    <div className="w-full flex flex-col xl:flex-row justify-end mb-6 gap-3">
+                        <button onClick={() => setProgress(progress-1)} className="btn btn-soft w-full xl:w-36">Cofnij</button>
+                        <button onClick={() => setProgress(progress+1)} className="btn btn-accent w-full xl:w-52">Stworz ogloszenie</button>
                     </div>
                 </div>
             );
         case 6:
             if(!isAuthed){
                 return (
-                    <div className="px-6 flex flex-col items-center justify-center gap-6">
+                    <div className="px-3 xl:px-6 flex flex-col items-center justify-center gap-6">
                         <p className="text-lg tracking-wide font-semibold text-center">Wszystko super, teraz jeszcze tylko...</p>
-                        <p className="text-md -mt-3">Zostało założyć konto. W jakiś sposób wykonawcy muszą się z tobą skontaktować.</p>
+                        <p className="text-md -mt-3 text-center">Zostało założyć konto. W jakiś sposób wykonawcy muszą się z tobą skontaktować.</p>
                         <div className="w-full relative mt-2">
                             <p className="absolute -top-2 left-3 bg-base-100 text-sm px-1 text-gray-500 z-10">Imie</p>
                             <input onChange={(e) => {setRegData(prev => ({ ...prev, name: e.target.value })); clearError();}} type="text" className="input input-bordered w-full" />
@@ -349,7 +349,7 @@ export default function Questionary({ open = false, onClose, pre = null }) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60" onClick={() => close()} role="dialog">
+    <div className="fixed px-3 lg:px-0 inset-0 z-50 flex items-center justify-center bg-black/60" onClick={() => close()} role="dialog">
       <div ref={panelRef} className="w-full max-w-5xl min-h-80 bg-base-100 rounded-lg shadow-lg" onClick={(e) => e.stopPropagation()}>
         <div className="w-full flex flex-row items-center justify-center px-6 py-3 gap-3">
             <progress className="progress progress-primary w-full" value={progress} max="5"></progress>

@@ -45,14 +45,14 @@ export default function UserDashboard() {
         <div className="w-full lg:w-64">
           <div className="bg-primary shadow-xl rounded-2xl">
             <div className="p-4">
-              <ul className="flex lg:flex-col gap-2">
+              <ul className="grid grid-cols-2 lg:flex lg:flex-col gap-2">
                 {TABS.map((t) => {
                   const active = selected === t.key;
                   return (
                     <li key={t.key} className="flex-1">
                         <button onClick={() => setSelected(t.key)}
                             className={[
-                                "btn w-full justify-start rounded-xl transition-all duration-200 tracking-wide",
+                                "btn w-full justify-center lg:justify-start rounded-xl transition-all duration-200 tracking-wide",
                                 active
                                 ? "btn-accent text-accent-content ring-2 ring-accent/50"
                                 : "btn-primary text-accent hover:text-white",
@@ -61,8 +61,8 @@ export default function UserDashboard() {
                     </li>
                   );
                 })}
-                <li className="flex-1 mt-12">
-                    <button onClick={() => logoutReq()} className="btn text-center w-full btn-error justify-center rounded-xl font-marker tracking-widest">Wyloguj sie</button>
+                <li className="flex-1 mt-3 lg:mt-12 col-span-2 lg:col-span-1">
+                    <button onClick={() => logoutReq()} className="btn col-span-2 lg:col-span-1 text-center w-full btn-error justify-center rounded-xl font-marker tracking-widest">Wyloguj sie</button>
                 </li>
               </ul>
             </div>

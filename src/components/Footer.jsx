@@ -2,16 +2,16 @@ import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
-    <div className="w-full h-48 bg-accent relative overflow-hidden">
-      <div className="absolute left-6 top-6 z-10 flex items-center gap-3 text-sm">
+    <div className="w-full bg-accent relative overflow-hidden min-h-40 py-4 px-4 sm:h-48">
+      <div className="absolute left-4 right-4 top-4 z-10 flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3 text-xs sm:text-sm">
         <p className="text-base-content/70">
           © {new Date().getFullYear()} FUSZERKOMAT. All rights reserved.
         </p>
-        <Link to="/login" className="btn btn-sm btn-ghost">Zaloguj się</Link>
-        <Link to="/register" className="btn btn-sm btn-outline">Załóż konto</Link>
+        <Link to="/login" className="btn btn-sm btn-ghost w-full sm:w-auto">Zaloguj się</Link>
+        <Link to="/register" className="btn btn-sm btn-outline w-full sm:w-auto">Załóż konto</Link>
       </div>
 
-      <div className="absolute right-6 top-6 z-10 flex gap-2">
+      <div className="absolute right-4 top-auto bottom-4 left-4 sm:left-auto sm:right-6 sm:top-6 sm:bottom-auto z-10 flex gap-2 justify-start sm:justify-end">
         <a aria-label="Instagram" href="#" className="btn btn-ghost btn-circle btn-sm">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" className="stroke-current">
             <rect x="3" y="3" width="18" height="18" rx="5" strokeWidth="1.5"></rect>
@@ -31,7 +31,7 @@ export default function Footer() {
         </a>
       </div>
 
-      <p className="absolute bottom-[-60%] text-[206px] tracking-[0.15em] font-marker"> FUSZERKOMAT </p>
+      <p className="absolute bottom-[-30%] sm:bottom-[-40%] lg:bottom-[-60%] left-1/2 -translate-x-1/2 text-[72px] sm:text-[140px] lg:text-[206px] tracking-[0.15em] font-marker pointer-events-none select-none whitespace-nowrap"> FUSZERKOMAT </p>
     </div>
   );
 }

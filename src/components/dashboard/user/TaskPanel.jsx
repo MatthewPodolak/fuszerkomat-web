@@ -66,8 +66,8 @@ export default function TaskPanel(){
 
     return (
         <div className="w-full h-auto flex flex-col">
-            <div className="w-full flex flex-row items-center py-3 px-3 justify-center bg-primary">
-                <div className="w-full flex flex-row gap-3">
+            <div className="w-full flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 py-3 px-3 bg-primary">
+                <div className="w-full flex flex-wrap gap-2 sm:gap-3">
                     {Status.map((st) => {
                         const isSelected = selectedStatuses.includes(st.val);
                         return (
@@ -100,7 +100,7 @@ export default function TaskPanel(){
                     ):(
                         <div className="items-center w-full flex flex-col mt-12 mb-24">
                             <Lottie lottieRef={lottieRef} animationData={EmptyLottie} loop autoplay className="w-full max-w-[500px] md:max-w-[700px] aspect-square -mt-12" />
-                            <p className="text-2xl font-marker tracking-widest">Zadnych ogloszen. A robota czeka...</p>
+                            <p className="text-2xl font-marker tracking-widest text-center">Zadnych ogloszen. A robota czeka...</p>
                         </div>
                     )}
                 </>

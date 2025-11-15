@@ -35,7 +35,7 @@ export default function Category() {
 
     return (
         <>
-            <div className="w-full h-auto min-h-screen flex items-center bg-whitesmoke justify-center">
+            <div className="w-full p-6 xl:p-0 h-auto min-h-screen flex items-center bg-whitesmoke justify-center">
                 <div className="w-7xl h-auto flex flex-col">
                     <p className="text-5xl text-left font-marker tracking-widest">{removePolishChars(selectedCategory.name)}</p>
                     <p className="text-xl text-left font-helvetica tracking-wide ml-2 mt-6">{selectedCategory.desc}</p>

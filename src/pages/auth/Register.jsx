@@ -85,23 +85,23 @@ export default function Register() {
 
         <div className="mb-12 text-center">
             {role ? (
-                <p className="text-4xl font-marker tracking-widest text-primary">{dialogLine}</p>
+                <p className="text-2xl xl:text-4xl font-marker tracking-widest text-primary">{dialogLine}</p>
             ) : (
-                <p className="text-4xl font-marker tracking-widest text-base-content/70"> CO CIE TUTAJ SPROWADZA? </p>
+                <p className="text-2xl xl:text-4xl font-marker tracking-widest text-base-content/70"> CO CIE TUTAJ SPROWADZA? </p>
             )}
         </div>
 
         <div className="flex items-center justify-center gap-10 mb-10">
 
             <div onClick={() => {setRole("fachowiec"); setRequestData({name: null}); clearError();}} className={`cursor-pointer flex flex-col items-center transition-all duration-200 ${ role === "fachowiec" ? "scale-105" : "opacity-80 hover:opacity-100" }`}>
-                <img src={Fachura} alt="Fachowiec" className={`w-40 h-40 rounded-full border-4 ${ role === "fachowiec" ? "border-primary shadow-lg" : "border-transparent" }`} />
+                <img src={Fachura} alt="Fachowiec" className={`w-30 h-30 xl:w-40 xl:h-40 rounded-full border-4 ${ role === "fachowiec" ? "border-primary shadow-lg" : "border-transparent" }`} />
                 <p className={`mt-3 font-semibold ${role === "fachowiec" ? "text-primary" : "text-base-content/70" }`}>
                     Fachowiec
                 </p>
             </div>
 
             <div onClick={() => {setRole("klient"); setRequestData({name: null}); clearError();}} className={`cursor-pointer flex flex-col items-center transition-all duration-200 ${ role === "klient" ? "scale-105" : "opacity-80 hover:opacity-100" }`} >
-                <img src={User} alt="Klient" className={`w-40 h-40 rounded-full border-4 ${ role === "klient" ? "border-primary shadow-lg" : "border-transparent" }`} />
+                <img src={User} alt="Klient" className={`w-30 h-30 xl:w-40 xl:h-40 rounded-full border-4 ${ role === "klient" ? "border-primary shadow-lg" : "border-transparent" }`} />
                 <p className={`mt-3 font-semibold ${ role === "klient" ? "text-primary" : "text-base-content/70" }`}>
                     Klient
                 </p>
