@@ -106,74 +106,90 @@ export default function ProfileInfoPanel(){
     }, [edited]);
 
     return (
-        <div className="w-full h-auto p-12 bg-base-100 rounded-2xl shadow-2xl flex flex-row gap-12 relative">
+        <div className="w-full h-auto p-4 sm:p-6 lg:p-12 bg-base-100 rounded-2xl shadow-2xl flex flex-col lg:flex-row gap-8 lg:gap-12 relative">
             {isEditing ? (
                 <>
-                    <div className="w-full h-auto flex flex-col items-center relative">
+                    <div className="w-full h-auto flex flex-col items-center lg:items-start relative">
                         <input ref={fileInputRef} type="file" accept="image/*" className="hidden" onChange={handleFileChange} />
-                        <div onClick={handleAvatarClick} className="cursor-pointer">
-                            <PfpDisplay overlay="true" size="xl" type="User" source={formData.img} />
+                        <div onClick={handleAvatarClick} className="cursor-pointer mb-6 lg:mb-0">
+                            <PfpDisplay overlay="true" size="xl" type="User" source={formData?.img} />
                         </div>
-                        <div className="w-102 mt-12 flex flex-col gap-6">
+                        <div className="w-full max-w-md mt-6 lg:mt-12 flex flex-col gap-6">
                             <div className="relative">
                                 <p className="absolute -top-2 left-3 bg-base-100 text-sm px-1 text-black z-10">Imie</p>
-                                <input type="text" className={`input input-bordered border-black w-full`}
-                                    value={formData?.name || ""} onChange={(e) => setFormData({ ...formData, name: e.target.value })} />
+                                <input type="text" className="input input-bordered border-black w-full"
+                                    value={formData?.name || ""}
+                                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                                />
                             </div>
                             <div className="relative">
                                 <p className="absolute -top-2 left-3 bg-base-100 text-sm px-1 text-black z-10">Nazwiko</p>
-                                <input type="text" className={`input input-bordered border-black w-full`} 
-                                    value={formData?.surname || ""} onChange={(e) => setFormData({ ...formData, surname: e.target.value })} />
+                                <input type="text" className="input input-bordered border-black w-full"
+                                    value={formData?.surname || ""}
+                                    onChange={(e) => setFormData({ ...formData, surname: e.target.value })}
+                                />
                             </div>
                             <div className="relative">
                                 <p className="absolute -top-2 left-3 bg-base-100 text-sm px-1 text-black z-10">Mail kontaktowy</p>
-                                <input type="text" className={`input input-bordered border-black w-full`} 
-                                    value={formData?.email || ""} onChange={(e) => setFormData({ ...formData, email: e.target.value })} />
+                                <input type="text" className="input input-bordered border-black w-full"
+                                    value={formData?.email || ""}
+                                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                                />
                             </div>
                             <div className="relative">
                                 <p className="absolute -top-2 left-3 bg-base-100 text-sm px-1 text-black z-10">Numer telefonu</p>
-                                <input type="text" className={`input input-bordered border-black w-full`} 
-                                    value={formData?.phone || ""} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} />
+                                <input type="text" className="input input-bordered border-black w-full"
+                                    value={formData?.phone || ""}
+                                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                                />
                             </div>
-                            <button onClick={() => updateReq()} className="btn btn-success font-marker tracking-widest" >zapisz zmiany</button>
+                            <button onClick={() => updateReq()} className="btn btn-success font-marker tracking-widest">zapisz zmiany</button>
                         </div>
 
-                        <div onClick={() => setIsEditing(false)} className="absolute right-0 top-0 cursor-pointer">
+                        <div onClick={() => setIsEditing(false)} className="absolute right-3 top-3 lg:right-0 lg:top-0 cursor-pointer" >
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-7">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
                             </svg>
                         </div>
                     </div>
                 </>
-            ):(
+            ) : (
                 <>
                     {!isLoading ? (
                         <>
-                            <PfpDisplay size="xl" type="User" source={userProfileData.img} />
-                            <div className="flex flex-col gap-6">
-                                <div>
-                                    <p className="font-marker text-accent">Imie i nazwisko</p>
-                                    <p className="font-marker tracking-[0.4rem] text-2xl">{userProfileData.name} {userProfileData.surname}</p>
-                                </div>
-                                <div>
-                                    <p className="font-marker text-accent">Adres e-mail do kontaktu</p>
-                                    <p className="font-marker tracking-[0.4rem] text-2xl">{userProfileData.email}</p>
-                                </div>
-                                <div>
-                                    <p className="font-marker text-accent">Telefon kontaktowy</p>
-                                    <p className="font-marker tracking-[0.4rem] text-2xl">{userProfileData.phone}</p>
+                            <div className="flex flex-col items-center lg:items-start gap-6 lg:flex-row lg:gap-12 w-full">
+                                <PfpDisplay size="xl" type="User" source={userProfileData.img} />
+                                <div className="flex flex-col gap-6 w-full max-w-xl">
+                                    <div>
+                                        <p className="font-marker text-accent">Imie i nazwisko</p>
+                                        <p className="font-marker tracking-[0.3rem] sm:tracking-[0.4rem] text-xl sm:text-2xl wrap-break-word">
+                                            {userProfileData.name} {userProfileData.surname}
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <p className="font-marker text-accent">Adres e-mail do kontaktu</p>
+                                        <p className="font-marker tracking-[0.2rem] sm:tracking-[0.3rem] text-lg sm:text-2xl wrap-break-word">
+                                            {userProfileData.email}
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <p className="font-marker text-accent">Telefon kontaktowy</p>
+                                        <p className="font-marker tracking-[0.2rem] sm:tracking-[0.3rem] text-lg sm:text-2xl wrap-break-word">
+                                            {userProfileData.phone}
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div onClick={() => setIsEditing(true)} className="absolute right-10 top-10 cursor-pointer">
+                            <div onClick={() => setIsEditing(true)} className="absolute right-3 top-3 lg:right-10 lg:top-10 cursor-pointer">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-7">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
                                 </svg>
                             </div>
                         </>
-                    ):(
+                    ) : (
                         <>
-                            <div className="w-full h-full flex-1 items-center justify-center">
+                            <div className="w-full h-full flex items-center justify-center">
                                 <ActivityIndicator size="medium" />
                             </div>
                         </>

@@ -11,7 +11,7 @@ export default function PfpDisplay({ size = "medium", source = null, type = "Use
     medium: "w-12 h-12",
     ml: "w-16 h-16",
     large: "w-20 h-20",
-    xl: "w-54 h-54",
+    xl: "w-42 h-42 lg:w-54 lg:h-54",
   };
 
   const fallbackSrc = type === "User" ? User : Fachura;
