@@ -7,6 +7,7 @@ import AuthOnly from "@/layouts/guards/AuthOnly.jsx";
 import UserOnly from "@/layouts/guards/UserOnly.jsx";
 import CompanyOnly from "@/layouts/guards/CompanyOnly.jsx";
 import UserAndAnonymusOnly from "@/layouts/guards/UserAndAnonymusOnly";
+import ViewportGuard from "@/layouts/guards/ViewportGuard";
 import { hydrateTokenStore } from "@/api/tokenStore.js";
 import { ToastProvider } from "@/context/ToastContext.jsx";
 import GlobalErrorCatcher from "@/helpers/GlobalErrorCatcher.jsx";
@@ -57,7 +58,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <ToastProvider>
       <GlobalErrorCatcher>
         <Suspense fallback={<Loading/>}> 
-          <RouterProvider router={router} />
+          <ViewportGuard minWidth={1024}>
+            <RouterProvider router={router} />
+          </ViewportGuard>
         </Suspense>
       </GlobalErrorCatcher>
     </ToastProvider>
