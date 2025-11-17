@@ -45,7 +45,7 @@ export default function TaskPreview({data, type="comp"}){
                     </svg>
                     <p className="text-sm tracking-wider ml-1">{location}</p>
                 </div>
-                {data.location?.distanceFrom && (
+                {(data.location?.distanceFrom && (data.location?.longtitude !== 0 && data.location?.latitude)) && (
                     <>
                         <p className={`text-sm tracking-wider ${Math.round(data.location?.distanceFrom) < 100 ? 'text-green-500' : Math.round(data.location?.distanceFrom) <= 200 ? 'text-orange-500' : 'text-red-500'}`}>~ {Math.round(data.location?.distanceFrom)} km</p>
                     </>

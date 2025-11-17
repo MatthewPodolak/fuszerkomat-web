@@ -95,8 +95,8 @@ export default function TaskDisplay() {
                                     : 52.2297
                                 }
                                 lng={
-                                    taskData.location?.longitude && taskData.location.longitude !== 0
-                                    ? taskData.location.longitude
+                                    taskData.location?.longtitude && taskData.location.longtitude !== 0
+                                    ? taskData.location.longtitude
                                     : 21.0122
                                 }
                                 zoom={14}
