@@ -5,7 +5,7 @@ import ActivityIndicator from "@/components/ActivityIndicator.jsx";
 
 const InfoPanel = lazy(() => import("@/components/dashboard/company/ProfileInfoPanel"));
 const AppliedPanel = lazy(() => import("@/components/dashboard/company/AppliedPanel"));
-const SettingsPanel = lazy(() => import("@/components/dashboard/company/SettingsPanel"));
+const SettingsPanel = lazy(() => import("@/components/dashboard/SettingsPanel"));
 
 const TABS = [
   { key: "info", label: "Profil" },
