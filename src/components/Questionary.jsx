@@ -185,7 +185,7 @@ export default function Questionary({ open = false, onClose, pre = null }) {
                     <div className="w-full flex gap-3 h-96 border rounded-xl border-gray-400 items-stretch">
                         <LocationPicker
                             initial={{ lat: questData?.location?.lat, lng: questData?.location?.long }}
-                            onPick={(lat, lng, x) => setQuestData(prev => ({ ...prev, location: { ...prev.location, lat, long: lng } }))}
+                            onPick={(lat, lng, x) => setQuestData(prev => ({ ...prev, location: { ...prev.location, lat, long: lng, name: `${x.postalCode} ${x.city} ${x.street}` } }))}
                         />
                     </div>
                     <div className="w-full flex flex-col xl:flex-row justify-end mb-6 gap-3">
@@ -332,9 +332,11 @@ export default function Questionary({ open = false, onClose, pre = null }) {
     var pubRes = await publishTask(fd);
     if (pubRes.aborted) return;
 
-    if(pubRes.status === 200){ showToast("Ogloszenie zamieszczone!","success"); onClose(); return; }
+    if(pubRes.status === 200){ showToast("Ogloszenie zamieszczone!","success"); setIsLoading(false); onClose(); return; }
 
-    showToast(null,"error"); return;
+    showToast(null,"error");
+    setIsLoading(false);
+    return;
   };
 
   const close = () => {

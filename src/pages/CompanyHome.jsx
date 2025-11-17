@@ -44,7 +44,7 @@ export default function CompanyHome() {
 
         const query = new URLSearchParams({
             Page: "1",
-            PageSize: "1",
+            PageSize: "10",
             ...(recivedData.keyWords ? { KeyWords: recivedData.keyWords } : {}),
             ...(recivedData.sort ? { SortOptions: recivedData.sort } : {}),
             ...(recivedData.category ? { CategoryType: recivedData.category } : {}),
