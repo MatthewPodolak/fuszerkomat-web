@@ -30,6 +30,21 @@ export const UserTaskService = {
         return res;
     },
 
+    async getById(id, {ct, timeoutMs} = {}){
+        const { method, url } = API.userWorkTasks.getById;
+
+        let query = new URLSearchParams({ id: String(id) });
+
+        const res = await apiJson(`${url}?${query.toString()}`,
+        {
+            method: method,
+            credentials: "include",
+        },
+        { ct, timeoutMs });
+
+        return res;
+    },
+
     async changeApplicationStatus(model, {ct, timeoutMs} = {}) {
         const { method, url } = API.userWorkTasks.changeApplicationStatus;
 

@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { useMutation } from "@/api/hooks/useMutation";
 import { useToast } from "@/context/ToastContext";
+import { useNavigate } from "react-router-dom";
 
 import { UserTaskService } from "@/api/services/UserTaskService";
 import Lottie from "lottie-react";
@@ -15,6 +16,7 @@ import EmptyLottie from "@/assets/lotties/empty.json";
 export default function TaskPanel(){
     const initialLoad = useRef(false);
     const lottieRef = useRef();
+    const navigate = useNavigate();
     const { showToast } = useToast();
     const [isLoading, setIsLoading] = useState(true);
     const [paginationState, setPaginationState] = useState(null);
@@ -55,8 +57,8 @@ export default function TaskPanel(){
         const { data, pagination } = res;
         setTaskData(data);
         setPaginationState(pagination);
-    }
-
+    };
+    
     useEffect(() => {
         if (!initialLoad.current) {
             initialLoad.current = true;
@@ -89,7 +91,7 @@ export default function TaskPanel(){
                     {taskData && taskData.length > 0 ? (
                         <div className="w-full flex flex-col gap-3 mt-3">
                             {taskData.map((task) => (
-                                <div key={task.id} className="w-full">
+                                <div onClick={() => navigate(`/user/tasks/${task.id}`)} key={task.id} className="w-full">
                                     <TaskPreview data={task} type="user" />
                                 </div>
                             ))}

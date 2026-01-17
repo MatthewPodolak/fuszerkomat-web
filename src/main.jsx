@@ -27,6 +27,7 @@ const Login = lazy(() => import("./pages/auth/Login"));
 
 const UserDashboard = lazy(() => import("./pages/user/UserDashboard"));
 const CompanyDashboard = lazy(() => import("./pages/company/CompanyDashboard"));
+const TaskDisplayUser = lazy(() => import("./pages/user/TaskDisplay"));
 
 const TaskDisplayCompany = lazy(() => import("./pages/company/TaskDisplay"));
 const CompanyDisplay = lazy(() => import("./pages/company/CompanyDisplay"));
@@ -45,6 +46,7 @@ const router = createBrowserRouter([
       { path: "register", element: <PublicOnly><Register /></PublicOnly> },
       { path: "login",    element: <PublicOnly><Login /></PublicOnly> },
       { path: "/user/dashboard", element: <UserOnly><UserDashboard /></UserOnly>},
+      { path: "/user/tasks/:id", element: <UserOnly><TaskDisplayUser /></UserOnly> },
       { path: "/company/dashboard", element: <CompanyOnly><CompanyDashboard /></CompanyOnly>},
       { path: "/company/tasks/:id", element: <CompanyOnly><TaskDisplayCompany /></CompanyOnly> },
       { path: "/company/:id", element: <AuthOnly><CompanyDisplay /></AuthOnly> },
