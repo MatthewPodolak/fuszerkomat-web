@@ -597,6 +597,11 @@
         "name": "Diagnosta",
         "tagName": "Diagnosta",
         "keywords": ["przegląd techniczny", "SKP", "badanie techniczne", "diagnostyka komputerowa", "emisja spalin", "hak", "zmiana konstrukcyjna", "gaz w aucie"]
+      },
+      {
+        "name": "Elektryka",
+        "tagName": "Elektryka",
+        "keywords": ["kable","elektryk","syf","elektryka samochodowa","samochodowa"]
       }
     ]
   },
