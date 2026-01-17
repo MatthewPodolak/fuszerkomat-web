@@ -89,7 +89,7 @@ export default function AppliedPanel(){
                     {taskData && taskData.length > 0 ? (
                         <div className="w-full flex flex-col gap-3 mt-3">
                             {taskData.map((task) => (
-                                <div onClick={() => navigate(`/company/tasks/${task.id}`)} key={task.id}>
+                                <div onClick={() => navigate(`/company/tasks/${task.taskId}`)} key={task.taskId}>
                                     <AppliedTaskPreview data={task} />
                                 </div>
                             ))}
