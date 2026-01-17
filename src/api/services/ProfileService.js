@@ -1,5 +1,6 @@
 import { apiJson, apiForm } from "@/api/api.js";
 import { API } from "@/api/endpoints.js";
+import { tokenStore } from "@/api/tokenStore.js";
 
 const KEY_PFP = "profile.pfp";
 
@@ -68,6 +69,27 @@ export const ProfileService = {
         credentials: "include",
     },
     { ct, timeoutMs });
+
+    return res;
+  },
+
+  async deleteAccount({ct, timeoutMs} = {}){
+    const { method, url } = API.account.deleteAccount;
+
+    const res = await apiJson(url,
+      {
+        method: method,
+        credentials: "include",
+      },
+      { ct, timeoutMs }
+    );
+
+    if(res.status === 200){
+      localStorage.removeItem('E2E_key');
+      localStorage.removeItem('SIGN_key');
+      localStorage.removeItem('E2E_key_pub');
+      tokenStore.clear();
+    }
 
     return res;
   }
