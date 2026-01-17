@@ -10,8 +10,8 @@ import PfpDisplay from "@/components/dashboard/PfpDisplay";
 import MapPin from "@/components/MapPin";
 import ImageDisplay from "@/components/ImageDisplay";
 import MsgPop from "@/components/MsgPop";
-const baseUrl = import.meta.env.VITE_API_ORIGIN;
 
+const baseUrl = import.meta.env.VITE_API_ORIGIN;
 
 export default function TaskDisplay() {
     const { id } = useParams();
@@ -33,10 +33,10 @@ export default function TaskDisplay() {
         (vars, ctx) => CompanyTaskService.apply(vars, ctx)
     );
 
-    const applyToTask = async (msg) => {
+    const applyToTask = async (msg, publicKey) => {
         setMsgPopActive(false);
-        let model = { workTaskId: id, initialMessage: msg };
-        const res = await apply(model);
+        
+        const res = await apply({ workTaskId: id, msg, publicKey });
 
         if(res.status === 200){ showToast("aplikacja wysłana", "success");  setTaskData(prev => ({ ...prev, aplicated: true }));  return; }
         if(res.status === 409){ showToast("już aplikowałeś...", "error"); return; }
@@ -156,7 +156,7 @@ export default function TaskDisplay() {
                 </div>
 
                 {msgPopActive && (
-                    <MsgPop onSend={applyToTask} onClose={() => setMsgPopActive(false)} />
+                    <MsgPop onSend={(msg) => applyToTask(msg, taskData.requestingUserDataVMO.publicKey)} onClose={() => setMsgPopActive(false)} />
                 )}
             </div>
         </div>

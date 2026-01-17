@@ -4,9 +4,9 @@ import { useMutation } from "@/api/hooks/useMutation";
 import { ChatService } from "@/api/services/ChatService";
 import { UserTaskService } from "@/api/services/UserTaskService";
 import { useToast } from "@/context/ToastContext";
-import ChatApi from "@/api/chatClient";
 import { tokenStore } from "@/api/tokenStore.js";
 import { getJwtClaim } from "@/helpers/jwtHelper";
+import ChatApi, { decryptMessage } from "@/api/chatClient";
 
 import ActivityIndicator from "@/components/ActivityIndicator";
 import ChatPreview from "@/components/ChatPreview";
@@ -77,7 +77,7 @@ export default function ChatPanel(){
         setInput("");
 
         const me = userId;
-        if(!me){ showToast("nie udało się wysłać wiadomośći", "error"); return; }
+        if (!me) { showToast("nie udało się wysłać wiadomości", "error"); return; }
 
         const tempId = `tmp-${Date.now()}-${Math.random().toString(36).slice(2)}`;
         const optimistic = {
@@ -89,26 +89,18 @@ export default function ChatPanel(){
         };
         setMessages((curr) => [...curr, optimistic]);
 
-        const rollback = () =>
-            setMessages((curr) => curr.filter((m) => m.id !== tempId));
+        const rollback = () => setMessages((curr) => curr.filter((m) => m.id !== tempId));
 
         try {
-            await api.sendMessage({ conversationId: selectedConvo, senderId: me, text, });
+            await api.sendMessage({
+            conversationId: selectedConvo,
+            senderId: me,
+            text,
+            recipientPublicKey: selectedConvoData.corespondentPublicKey,
+            });
         } catch (e) {
-            if (e?.code === 16) {
-                setTimeout(async () => {
-                    try {
-                    await api.sendMessage({ conversationId: selectedConvo, senderId: me, text, });
-                    } catch (err2) {
-                        rollback();
-                        showToast("Nie udało się wysłać wiadomości", "error");
-                    }
-                }, 800);
-            } 
-            else {
-                rollback();
-                showToast("Nie udało się wysłać wiadomości", "error");
-            }
+            rollback();
+            showToast("Nie udało się wysłać wiadomości", "error");
         }
     };
 
@@ -166,86 +158,56 @@ export default function ChatPanel(){
         let cancelled = false;
 
         async function connect() {
-        if (!selectedConvo) return;
+            if (!selectedConvo || !selectedConvoData) return;
 
-        stopStreamRef.current?.();
-        stopStreamRef.current = null;
+            stopStreamRef.current?.();
+            stopStreamRef.current = null;
 
-        try {
-            const list = await api.listMessages({ conversationId: selectedConvo, page: 1, pageSize: 100 });
-            if (cancelled) return;
+            try {
+                const list = await api.listMessages({ conversationId: selectedConvo, page: 1, pageSize: 100 });
+                if (cancelled) return;
 
-            const items = list.getItemsList().map((m) => ({ id: m.getMessageId(), from: m.getSenderId(), text: m.getText(), ts: m.getCreatedAt(), }));
-            setMessages(items);
+                const items = await Promise.all(
+                list.getItemsList().map((m) => 
+                    decryptMessage(m, userId, selectedConvoData.corespondentPublicSignKey)
+                )
+                );
+                setMessages(items);
 
-            const since = items.length ? items[items.length - 1].ts : undefined;
+                const since = items.length ? items[items.length - 1].ts : undefined;
 
-            stopStreamRef.current = api.subscribeMessages({
-            conversationId: selectedConvo,
-            sinceIso: since,
-            onData: (m) => {
-                const next = {
-                    id: m.getMessageId(),
-                    from: m.getSenderId(),
-                    text: m.getText(),
-                    ts: m.getCreatedAt(),
-                };
+                stopStreamRef.current = api.subscribeMessages({
+                conversationId: selectedConvo,
+                sinceIso: since,
+                onData: async (m) => {
+                    const next = await decryptMessage(m, userId, selectedConvoData.corespondentPublicSignKey);
 
-                setMessages((curr) => {
+                    setMessages((curr) => {
                     const idx = curr.findIndex(
                         (x) => x.optimistic && x.from === next.from && x.text === next.text
                     );
                     if (idx !== -1) {
-                    const copy = curr.slice();
-                    copy[idx] = next;
-                    return copy;
+                        const copy = curr.slice();
+                        copy[idx] = next;
+                        return copy;
                     }
                     return [...curr, next];
-                });
-            },
-            onError: (e) => {
-                if (e?.code === 16) {
-                setTimeout(() => {
-                    if (!cancelled) {
-                    const lastTs = (prev => prev[prev.length - 1]?.ts)(messages);
-                    stopStreamRef.current = api.subscribeMessages({
-                        conversationId: selectedConvo,
-                        sinceIso: lastTs,
-                        onData: (m) => {
-                        const next = {
-                            id: m.getMessageId(),
-                            from: m.getSenderId(),
-                            text: m.getText(),
-                            ts: m.getCreatedAt(),
-                        };
-                        setMessages((curr) => [...curr, next]);
-                        },
-                        onError: (err) => showToast(null, "error"),
                     });
-                    }
-                }, 800);
-                } 
-                else {
-                    showToast(null, "error");
-                }
-            },
-            });
-        } catch (err) {
-            showToast("Nie udało się wczytać wiadomości", "error");
-        } finally {
-            if (!cancelled) setSelectedConvoLoading(false);
+                },
+                onError: (e) => showToast(null, "error"),
+                });
+            } catch (err) {
+                showToast("Nie udało się wczytać wiadomości", "error");
+            } finally {
+                if (!cancelled) setSelectedConvoLoading(false);
+            }
         }
-        }
-
+        
         setSelectedConvoLoading(Boolean(selectedConvo));
         connect();
 
-        return () => {
-            cancelled = true;
-            stopStreamRef.current?.();
-            stopStreamRef.current = null;
-        };
-    }, [selectedConvo, api]);
+        return () => { cancelled = true; stopStreamRef.current?.(); };
+    }, [selectedConvo, selectedConvoData, api, userId]);
 
     return (
         <div className="w-full h-auto min-h-screen py-12 flex bg-whitesmoke justify-center items-center">

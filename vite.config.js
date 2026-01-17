@@ -14,4 +14,10 @@ export default defineConfig({
     optimizeDeps: {
     include: ['@local/chat-protos', 'google-protobuf'],
   },
+  build: {
+    commonjsOptions: {
+      transformMixedEsModules: true,
+      include: [/node_modules/, /@local\/chat-protos/, /chat-protos/],
+    },
+  }
 });

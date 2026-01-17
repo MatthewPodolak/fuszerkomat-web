@@ -13,7 +13,10 @@ message OpenOrGetConversationRequest {
   int32 task_id = 1;
   string owner_user_id = 2;
   string company_user_id = 3;
-  string initial_message = 4;
+  string initial_encrypted_payload = 4;
+  string initial_key_for_recipient = 5;
+  string initial_key_for_sender = 6;
+  string initial_iv = 7;
 }
 
 message OpenOrGetConversationResponse {
@@ -24,7 +27,10 @@ message OpenOrGetConversationResponse {
 message SendMessageRequest {
   string conversation_id = 1;
   string sender_id = 2;
-  string text = 3;
+  string encrypted_payload = 3;
+  string key_for_recipient = 4;
+  string key_for_sender = 5;
+  string iv = 6;
 }
 
 message SendMessageResponse {
@@ -41,8 +47,11 @@ message ListMessagesRequest {
 message Message {
   string message_id = 1;
   string sender_id = 2;
-  string text = 3;
-  string created_at = 4;
+  string encrypted_payload = 3;
+  string key_for_recipient = 4;
+  string key_for_sender = 5;
+  string iv = 6;
+  string created_at = 7;
 }
 
 message ListMessagesResponse {
