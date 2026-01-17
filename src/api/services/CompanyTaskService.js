@@ -1,5 +1,6 @@
 import { apiJson, apiForm } from "@/api/api.js";
 import { API } from "@/api/endpoints.js";
+import { EncryptMsg } from "../../helpers/crypto";
 
 export const CompanyTaskService = {
     async getTasks(query, {ct, timeoutMs} = {}) {
@@ -42,8 +43,28 @@ export const CompanyTaskService = {
         return res;
     },
 
-    async apply(model, {ct, timeoutMs} = {}){
+    async apply({ workTaskId, msg, publicKey }, { ct, timeoutMs } = {}) {
         const { method, url } = API.companyWorkTask.apply;
+
+        const myPrivateSignKey = localStorage.getItem('SIGN_key');
+        const myPublicKey = localStorage.getItem('E2E_key_pub');
+
+        const encrypted = await EncryptMsg(
+            msg,
+            publicKey,
+            myPublicKey, 
+            myPrivateSignKey
+        );
+
+        const model = {
+            workTaskId,
+            messageVM: {
+            encryptedPayload: encrypted.encryptedPayload,
+            keyForRecipient: encrypted.keyForRecipient,
+            keyForSender: encrypted.keyForSender,
+            iv: encrypted.iv,
+            }
+        };
 
         const res = await apiJson(url,
         {

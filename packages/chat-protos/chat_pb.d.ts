@@ -1,7 +1,5 @@
 import * as jspb from 'google-protobuf'
 
-
-
 export class OpenOrGetConversationRequest extends jspb.Message {
   getTaskId(): number;
   setTaskId(value: number): OpenOrGetConversationRequest;
@@ -12,8 +10,17 @@ export class OpenOrGetConversationRequest extends jspb.Message {
   getCompanyUserId(): string;
   setCompanyUserId(value: string): OpenOrGetConversationRequest;
 
-  getInitialMessage(): string;
-  setInitialMessage(value: string): OpenOrGetConversationRequest;
+  getInitialEncryptedPayload(): string;
+  setInitialEncryptedPayload(value: string): OpenOrGetConversationRequest;
+
+  getInitialKeyForRecipient(): string;
+  setInitialKeyForRecipient(value: string): OpenOrGetConversationRequest;
+
+  getInitialKeyForSender(): string;
+  setInitialKeyForSender(value: string): OpenOrGetConversationRequest;
+
+  getInitialIv(): string;
+  setInitialIv(value: string): OpenOrGetConversationRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): OpenOrGetConversationRequest.AsObject;
@@ -28,7 +35,10 @@ export namespace OpenOrGetConversationRequest {
     taskId: number;
     ownerUserId: string;
     companyUserId: string;
-    initialMessage: string;
+    initialEncryptedPayload: string;
+    initialKeyForRecipient: string;
+    initialKeyForSender: string;
+    initialIv: string;
   };
 }
 
@@ -61,8 +71,17 @@ export class SendMessageRequest extends jspb.Message {
   getSenderId(): string;
   setSenderId(value: string): SendMessageRequest;
 
-  getText(): string;
-  setText(value: string): SendMessageRequest;
+  getEncryptedPayload(): string;
+  setEncryptedPayload(value: string): SendMessageRequest;
+
+  getKeyForRecipient(): string;
+  setKeyForRecipient(value: string): SendMessageRequest;
+
+  getKeyForSender(): string;
+  setKeyForSender(value: string): SendMessageRequest;
+
+  getIv(): string;
+  setIv(value: string): SendMessageRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): SendMessageRequest.AsObject;
@@ -76,7 +95,10 @@ export namespace SendMessageRequest {
   export type AsObject = {
     conversationId: string;
     senderId: string;
-    text: string;
+    encryptedPayload: string;
+    keyForRecipient: string;
+    keyForSender: string;
+    iv: string;
   };
 }
 
@@ -135,8 +157,17 @@ export class Message extends jspb.Message {
   getSenderId(): string;
   setSenderId(value: string): Message;
 
-  getText(): string;
-  setText(value: string): Message;
+  getEncryptedPayload(): string;
+  setEncryptedPayload(value: string): Message;
+
+  getKeyForRecipient(): string;
+  setKeyForRecipient(value: string): Message;
+
+  getKeyForSender(): string;
+  setKeyForSender(value: string): Message;
+
+  getIv(): string;
+  setIv(value: string): Message;
 
   getCreatedAt(): string;
   setCreatedAt(value: string): Message;
@@ -153,7 +184,10 @@ export namespace Message {
   export type AsObject = {
     messageId: string;
     senderId: string;
-    text: string;
+    encryptedPayload: string;
+    keyForRecipient: string;
+    keyForSender: string;
+    iv: string;
     createdAt: string;
   };
 }
@@ -211,4 +245,3 @@ export namespace SubscribeMessagesRequest {
     since: string;
   };
 }
-

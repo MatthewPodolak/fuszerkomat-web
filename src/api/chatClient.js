@@ -1,6 +1,7 @@
 import { ChatClient } from "@/api/protos/ChatServiceClientPb";
 import { tokenStore } from "@/api/tokenStore";
 import { OpenOrGetConversationRequest, SendMessageRequest, ListMessagesRequest, SubscribeMessagesRequest } from "@local/chat-protos";
+import { EncryptMsg, DecryptMsg, CheckSignature } from "@/helpers/crypto";
 
 const BASE_URL = import.meta.env.VITE_API_ORIGIN;
 
@@ -14,13 +15,25 @@ export default class ChatApi {
     return token ? { Authorization: `Bearer ${token}` } : {};
   }
 
-  openOrGetConversation({ taskId, ownerUserId, companyUserId, initialMessage }) {
+  async openOrGetConversation({ taskId, ownerUserId, companyUserId, initialMessage, recipientPublicKey }) {
+    const req = new OpenOrGetConversationRequest();
+    req.setTaskId(taskId);
+    req.setOwnerUserId(ownerUserId);
+    req.setCompanyUserId(companyUserId);
+
+    if (initialMessage && recipientPublicKey) {
+      const myPublicKey = localStorage.getItem('E2E_key_pub');
+      const myPrivateSignKey = localStorage.getItem('SIGN_key');
+      
+      const encrypted = await EncryptMsg(initialMessage, recipientPublicKey, myPublicKey, myPrivateSignKey);
+      
+      req.setInitialEncryptedPayload(encrypted.encryptedPayload);
+      req.setInitialKeyForRecipient(encrypted.keyForRecipient);
+      req.setInitialKeyForSender(encrypted.keyForSender);
+      req.setInitialIv(encrypted.iv);
+    }
+
     return new Promise((resolve, reject) => {
-      const req = new OpenOrGetConversationRequest();
-      req.setTaskId(taskId);
-      req.setOwnerUserId(ownerUserId);
-      req.setCompanyUserId(companyUserId);
-      if (initialMessage) req.setInitialMessage(initialMessage);
       this.client.openOrGetConversation(req, this.meta(), (err, resp) => (err ? reject(err) : resolve(resp)));
     });
   }
@@ -35,12 +48,21 @@ export default class ChatApi {
     });
   }
 
-  sendMessage({ conversationId, senderId, text }) {
+  async sendMessage({ conversationId, senderId, text, recipientPublicKey }) {
+    const myPublicKey = localStorage.getItem('E2E_key_pub');
+    const myPrivateSignKey = localStorage.getItem('SIGN_key');
+
+    const encrypted = await EncryptMsg(text, recipientPublicKey, myPublicKey, myPrivateSignKey);
+
+    const req = new SendMessageRequest();
+    req.setConversationId(conversationId);
+    req.setSenderId(senderId);
+    req.setEncryptedPayload(encrypted.encryptedPayload);
+    req.setKeyForRecipient(encrypted.keyForRecipient);
+    req.setKeyForSender(encrypted.keyForSender);
+    req.setIv(encrypted.iv);
+
     return new Promise((resolve, reject) => {
-      const req = new SendMessageRequest();
-      req.setConversationId(conversationId);
-      req.setSenderId(senderId);
-      req.setText(text);
       this.client.sendMessage(req, this.meta(), (err, resp) => (err ? reject(err) : resolve(resp)));
     });
   }
@@ -49,10 +71,54 @@ export default class ChatApi {
     const req = new SubscribeMessagesRequest();
     req.setConversationId(conversationId);
     if (sinceIso) req.setSince(sinceIso);
+
     const stream = this.client.subscribeMessages(req, this.meta());
     stream.on("data", (msg) => onData?.(msg));
     stream.on("error", (e) => onError?.(e));
     stream.on("end", () => onEnd?.());
+
     return () => stream.cancel();
+  }
+}
+
+export async function decryptMessage(protoMsg, myUserId, senderPublicSignKey) {
+  const m = protoMsg.toObject();
+
+  const myPrivateKey = localStorage.getItem('E2E_key');
+  
+  const encryptedAesKey = m.senderId === myUserId 
+    ? m.keyForSender 
+    : m.keyForRecipient;
+
+  try {
+    const { msg, signature } = await DecryptMsg(
+      m.encryptedPayload,
+      encryptedAesKey,
+      m.iv,
+      myPrivateKey
+    );
+
+    let verified = false;
+    if (senderPublicSignKey) {
+      verified = await CheckSignature(msg, signature, senderPublicSignKey);
+    }
+
+    return {
+      id: m.messageId,
+      from: m.senderId,
+      text: msg,
+      ts: m.createdAt,
+      verified,
+    };
+  } catch (e) {
+    console.error("Decrypt failed:", e);
+    return {
+      id: m.messageId,
+      from: m.senderId,
+      text: "[nie można odszyfrować]",
+      ts: m.createdAt,
+      verified: false,
+      error: true,
+    };
   }
 }
